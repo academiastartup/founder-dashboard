@@ -1,0 +1,121 @@
+.search-bar-icon {
+    width : 2.4rem;
+    padding : 0.8rem;
+    border-radius: 10px;
+    cursor : pointer;
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+    transition: all 0.3s;
+}
+
+.search-bar-icon:hover {
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    stroke : #1c7ed6;
+}
+
+.ring-bell {
+    stroke : #1c7ed6;
+}
+
+.action-button {
+    display: flex;
+    gap : 0.8rem;
+    justify-content: center;
+    align-items: center;
+    width : 140px;
+    border-radius: 10px;
+    color : #fff;
+    font-size: 1.4rem;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.8rem;
+    background-color: #1c7ed6;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+}
+
+.notifications-and-action-btns {
+    display: flex;
+    gap : 1.2rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.notifications {
+    position: relative;
+}
+
+.notification-numbers {
+    position: absolute;
+    top : 0;
+    right : 0;
+    color : #fff;
+    padding : 0.4rem;
+    font-weight: 900;
+    border-radius: 50%;
+    background-color: #e03131;
+}
+
+.search-form {
+    display : flex;
+    gap : 1.6rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    width: 100%;
+}
+
+.input-field {
+    width : 100%;
+    border : none;
+    font-size: 1.6rem;
+    height: 30px;
+}
+
+.input-field:active {
+    border : none;
+}
+
+.arrow-down {
+    width : 2.4rem;
+}
+
+.context-menu {
+    position: absolute;
+    width : 250px;
+    bottom: 0;
+    z-index: 100;
+    top : 5rem;
+    right: 0;
+}
+
+.menu-items {
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    border-radius: 10px;
+    list-style: none;
+    padding : 1.6rem;
+}
+
+.menu-item {
+    display : flex;
+    padding : 1.6rem;
+    align-items: center;
+    gap : 0.8rem;
+}
+
+.action-btn-section {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-link {
+    display : inline-block;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.menu-icon {
+    width : 24px;
+    stroke : #1c7ed6;
+}

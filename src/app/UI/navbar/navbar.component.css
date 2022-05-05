@@ -1,0 +1,94 @@
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    font-weight: 900;
+}
+
+.textual-presentation-inner {
+    width : 50%;
+}
+
+.navbar {
+    display : flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    display : inline-block;
+    height : 100vh;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+.list-of-links, .action-menu {
+    display : flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.link-list {
+    list-style: none;
+   
+    width : 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.link:hover {
+    background-color: #e9ecef;
+    transition: all 0.3s;
+}
+
+.link {
+    display : inline-block;
+    padding-bottom : 1.8rem;
+    padding-top : 1.8rem;
+    text-decoration: none;
+    color : #495057;
+    width : 100%;
+    height: 100%;
+}
+
+.nav-icon, .link-text {
+    display : inline-block;
+}
+
+.link-container {
+    display : flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-link {
+    background-color: #e9ecef;
+    color : #212529;
+}
+
+.nav-icon {
+    width : 1.8rem;
+    height: 1.8rem;
+    left: 1.6rem;
+    top : 1.6rem;
+}
+
+/*LOGO*/
+.logo {
+    padding-top : 1.6rem;
+    text-transform: uppercase;
+}
+
+.logo p:last-child {
+    margin-top: -10px;
+    font-size : 12px;
+    letter-spacing: 4px;
+}
+
+.logo p:first-child {
+    margin-top : 0;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,36 @@
+.credit-component {
+    margin-top : 3.0rem;
+    padding : 3.6rem;
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    height: 300PX;
+}
+
+.company-name {
+    text-align: center;
+    font-size : 1.6rem;
+    font-weight: 500;
+    color : #495057;
+}
+
+.balance-value {
+    font-size : 3.8rem;
+    text-align: center;
+    font-weight:200;
+}
+
+.up-icon {
+    width : 1.8rem;
+    stroke : green;
+}
+
+.latest-transaction {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transaction-value-history {
+    font-size: 1.6rem;
+    font-weight:100;
+}
