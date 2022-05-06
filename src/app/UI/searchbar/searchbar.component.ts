@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SearchbarComponent implements OnInit {
 
   public actionContextMenuClosed : boolean = true;
+  public actionNotificationsMenuClosed : boolean = true;
 
  
   constructor() { }
@@ -17,6 +18,10 @@ export class SearchbarComponent implements OnInit {
 
   toggleContextMenu() {
     this.actionContextMenuClosed = !this.actionContextMenuClosed;
+  }
+
+  toggleNotificationsMenu() {
+    this.actionNotificationsMenuClosed = !this.actionNotificationsMenuClosed;
   }
 
 
