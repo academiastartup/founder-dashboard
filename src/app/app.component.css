@@ -7,3 +7,55 @@
     width: 100%;
 }
 
+.search-bar-icon {
+    width : 2.4rem;
+    padding : 0.8rem;
+    border-radius: 50%;
+    cursor : pointer;
+    box-shadow: 10px 20px 30px 10px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s;
+    border : solid 1px  #e9ecef;
+
+    position : fixed;
+    bottom : 10px;
+    right : 10px;
+}
+
+.search-bar-icon:hover {
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    stroke : #1c7ed6;
+}
+
+.help-section {
+    position : fixed;
+    bottom : 60px;
+    right : 10px;
+    background-color: #fff;
+    border : solid 1px #e9ecef;
+    border-radius: 10px;
+
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    width : 18%;
+}
+
+.menu-items {
+    display : flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    font-size: 1.2rem;
+    align-items: flex-start;
+}
+
+.menu-items li {
+    list-style: none;
+}
+
+.padding-16 {
+    padding : 1.2rem;
+}
+
+.menu-help-item {
+    text-decoration: none;
+    font-size: 1.4rem;
+}

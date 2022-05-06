@@ -22,6 +22,7 @@ export class SearchbarComponent implements OnInit {
 
   toggleNotificationsMenu() {
     this.actionNotificationsMenuClosed = !this.actionNotificationsMenuClosed;
+    this.actionContextMenuClosed = true;
   }
 
 

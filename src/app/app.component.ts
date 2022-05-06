@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'main-dashboard';
+  public actionContextMenuClosed : boolean = true;
+
+  toggleContextMenu() {
+    this.actionContextMenuClosed = !this.actionContextMenuClosed;
+  }
 }

@@ -83,8 +83,10 @@
 
             <!-- ////////////// NOTIFICATION MENU ////////////// -->
             <div class="notifications-menu" *ngIf="!actionNotificationsMenuClosed">
-                <div class="notification-header">
-                    <div class="padding-32px">
+                <div class="notification-container">
+                    
+                    <!--  ///// NOTIFICATION HEADER ////// -->
+                    <div class="notification-header">
                         <h1 class="notification-header-title">
                             NOTIFICAÇÕES
                         </h1>
@@ -94,6 +96,53 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </div>
+
+                    <!--  ///// NOTIFICATION ITEM ////// -->
+                    <div class="notification-item">
+                        <div class="notification-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-context-menu" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="notification-main-text">APROVAÇÃO</p>
+                        </div>
+                        <div class="notification-date">
+                            <p>Ontém, 05 de Maio</p>
+                        </div>
+
+                        <p class="transaction-description">
+                            lorem
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos vitae nostrum repellendus qui maiores eum odio quasi quo dicta nihil facere labore cum libero doloribus, amet exercitationem, cumque, consectetur in!
+                        </p>
+
+                        <a class="action-button">
+                            Aprovar transação
+                        </a>
+
+                    </div>
+
+                    <!--  ///// NOTIFICATION ITEM ////// -->
+                    <div class="notification-item">
+                        <div class="notification-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-context-menu" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="notification-main-text">APROVAÇÃO</p>
+                        </div>
+                        <div class="notification-date">
+                            <p>Ontém, 05 de Maio</p>
+                        </div>
+
+                        <p class="transaction-description">
+                            lorem
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos vitae nostrum repellendus qui maiores eum odio quasi quo dicta nihil facere labore cum libero doloribus, amet exercitationem, cumque, consectetur in!
+                        </p>
+
+                        <a class="action-button">
+                            Aprovar transação
+                        </a>
+                    </div>
+
+
                 </div>
             </div>
 
