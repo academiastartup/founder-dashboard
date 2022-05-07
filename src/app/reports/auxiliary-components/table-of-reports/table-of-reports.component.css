@@ -1,0 +1,52 @@
+.row {
+    display : grid;
+    grid-template-columns: 1fr 6fr 2fr 2fr;
+}
+
+.table {
+    margin-top : 1.6rem;
+}
+
+.table-header {
+    padding : 1.2rem 0;
+    border-bottom: solid 1px #e9ecef;
+}
+
+.data-label {
+    font-size : 1.2rem;
+    font-weight: 500;
+}
+
+.icon {
+    width : 18px;
+    height: 18px;
+}
+
+.flex {
+    display : flex;
+    gap : 0.8rem;
+    align-items: center;
+}
+
+.table-body .cell {
+    padding: 1.6rem 0;
+}
+
+
+
+.border-bottom {
+    border-bottom: solid 1px #e9ecef;
+}
+
+.table-body .row {
+    cursor: pointer;
+}
+
+.table-body .row:hover  {
+    background-color:  rgba(28, 127, 214, 0.0866);
+    border-radius: 2px;
+}
+
+.table-body .row:hover .border-bottom {
+    border-bottom: solid 1px transparent;
+}
