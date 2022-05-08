@@ -1,0 +1,52 @@
+<div class="report-component">
+
+    <div class="header-section">
+        <h1 class="section-main-title">Relatório das operações</h1>
+        <div class="pagination-section">
+            <p class="pagination-indicator">1 de 100</p>
+            <div class="forward-backward-icons">
+
+                <!-- backward icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+
+                <!-- forward icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-and-export-section">
+        <div class="filter-section">
+            <button class="filter-and-export-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                Adicionar filtros
+            </button>
+            <p class="filter-text">Sem filtros adicionados</p>
+        </div>
+        <div class="export-section">
+            <button class="filter-and-export-btn" (click)="toggleModalWindow()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Exportar
+            </button>
+        </div>
+    </div>
+
+    <app-table-of-reports (exportReportEvent)="toggleModalWindow()"></app-table-of-reports>
+
+    <!-- ///// MODAL WINDOW FOR FILE DOWNLOAD ///// -->
+    <app-modal-window *ngIf="openModalWindow" [modalWindowOpen]="openModalWindow" (modalWindowClosedEvent)="toggleModalWindow()"></app-modal-window>
+
+    <!-- ///// SHADOW TO HIGHLIGHT THE MODAL WINDOW -->
+    <div class="shadow" *ngIf="openModalWindow"></div>
+    
+</div>
+
+

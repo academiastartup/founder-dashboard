@@ -50,3 +50,7 @@
 .table-body .row:hover .border-bottom {
     border-bottom: solid 1px transparent;
 }
+
+.cash-in {
+    stroke : green;
+}

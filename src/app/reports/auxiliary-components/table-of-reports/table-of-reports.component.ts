@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table-of-reports',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableOfReportsComponent implements OnInit {
 
+  @Output() exportReportEvent = new EventEmitter<any>();
+ 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  emitExportReportEvent() {
+    this.exportReportEvent.emit(null);
   }
 
 }

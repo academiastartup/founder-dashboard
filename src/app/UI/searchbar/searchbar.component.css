@@ -3,6 +3,8 @@
     padding : 0.8rem;
     border-radius: 10px;
     cursor : pointer;
+    stroke :  #b5b5b6;
+    border : solid 1px  #e9ecef;
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
     transition: all 0.3s;
 }
@@ -45,8 +47,8 @@
 
 .notification-numbers {
     position: absolute;
-    top : 0;
-    right : 0;
+    top : -5px;
+    right : -5px;
     color : #fff;
     padding : 0.4rem;
     font-weight: 900;
@@ -93,6 +95,7 @@
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
     background-color: #fff;
     border-radius: 10px;
+    border : solid 1px  #e9ecef;
     list-style: none;
     padding : 1.6rem;
 }
@@ -126,7 +129,7 @@
     top : 0;
     background-color: #fff;
     right : 0;
-
+    border-left : solid 1px  #e9ecef;
     display : flex;
     flex-direction: column;
     gap : 1.2rem;
@@ -194,4 +197,10 @@
 .transaction-description {
     padding: 1.6rem 0;
     font-size : 1.2rem;
+}
+
+.menu-main-action-btn {
+    background-color: #fff;
+    border: solid 1px  #e9ecef;
+    color : #495057;
 }

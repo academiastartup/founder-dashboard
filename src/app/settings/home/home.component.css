@@ -1,0 +1,70 @@
+.settings-component {
+    margin-top : 3.0rem;
+}
+
+.user-description {
+    display : flex;
+    gap : 1.2rem;
+    border-bottom: solid 1px #e9ecef;
+    padding-bottom: 1.2rem;
+    align-items: center;
+}
+
+.user-name-initial {
+    background-color: #1c7ed6;
+    padding : 1.6rem;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size : 2.4rem;
+    color : #fff;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.separate-section {
+    padding : 3.6rem 0;
+    border-bottom: solid 1px #e9ecef;
+}
+
+.data-label {
+    align-self: flex-start;
+    font-size : 1.4rem;
+}
+
+.separate-section {
+    display : grid;
+    align-items: center;
+    grid-template-columns: 1fr 2fr;
+}
+
+.edit-section {
+    display : flex;
+    flex-direction: column;
+    gap : 1.2rem;
+}
+
+.edit-btn {
+    display : inline-block;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.edit-btn {
+    display : flex;
+    color:#1c7ed6;
+    align-items: center;
+}
+
+.edit-btn:hover {
+    text-decoration :underline;
+}
+
+.icon {
+    width : 16px;
+}
+
+.last-section {
+    border-bottom: none;
+}
