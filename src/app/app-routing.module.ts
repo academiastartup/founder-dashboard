@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path : 'definicoes',
     loadChildren : () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path : 'projetos',
+    loadChildren :() => import('./projects/projects.module').then(m => m.ProjectsModule)
   }
 ];
 
