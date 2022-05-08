@@ -18,4 +18,8 @@ export class HomeComponent implements OnInit {
     this.openModalWindow = !this.openModalWindow;
   }
 
+  closeModalWindow() {
+    this.openModalWindow = false;
+  }
+
 }

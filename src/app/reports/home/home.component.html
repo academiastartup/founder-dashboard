@@ -45,7 +45,7 @@
     <app-modal-window *ngIf="openModalWindow" [modalWindowOpen]="openModalWindow" (modalWindowClosedEvent)="toggleModalWindow()"></app-modal-window>
 
     <!-- ///// SHADOW TO HIGHLIGHT THE MODAL WINDOW -->
-    <div class="shadow" *ngIf="openModalWindow"></div>
+    <div class="shadow" *ngIf="openModalWindow" (click)="closeModalWindow()"></div>
     
 </div>
 
