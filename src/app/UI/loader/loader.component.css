@@ -1,0 +1,70 @@
+/**
+ * ==============================================
+ * Dot Bricks
+ * ==============================================
+ */
+.col-3 {
+   display : flex;
+   justify-content : center;
+   
+
+   position: absolute;
+   top: 50%;
+   left: 60%;
+   transform: translate(-50%, -50%);
+}
+
+.dot-bricks {
+    position: relative;
+    top: 8px;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #1c7ed6;
+    color: #1c7ed6;
+    box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
+    animation: dotBricks 2s infinite ease;
+}
+
+@keyframes dotBricks {
+    0% {
+      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
+    }
+    8.333% {
+      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
+    }
+    16.667% {
+      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
+    }
+    25% {
+      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
+    }
+    33.333% {
+      box-shadow: 10007px 0 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
+    }
+    41.667% {
+      box-shadow: 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
+    }
+    50% {
+      box-shadow: 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
+    }
+    58.333% {
+      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
+    }
+    66.666% {
+      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
+    }
+    75% {
+      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
+    }
+    83.333% {
+      box-shadow: 9991px -16px 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
+    }
+    91.667% {
+      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
+    }
+    100% {
+      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
+    }
+}

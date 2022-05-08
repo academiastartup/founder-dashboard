@@ -9,6 +9,7 @@ import { MainComponent } from './Home/main/main.component';
 import { CreditBalanceComponent } from './Home/UI/credit-balance/credit-balance.component';
 import { TransactionComponent } from './Home/UI/transaction/transaction.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoaderModule } from './UI/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
+    LoaderModule,
     AppRoutingModule,
     RouterModule,
   ],

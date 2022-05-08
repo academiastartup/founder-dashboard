@@ -17,7 +17,11 @@ const routes: Routes = [
   },
   {
     path : 'projetos',
-    loadChildren :() => import('./projects/projects.module').then(m => m.ProjectsModule)
+    loadChildren : () => import('./projects/projects.module').then(m => m.ProjectsModule)
+  },
+  {
+    path : 'creditos',
+    loadChildren : () => import('./credits/credits.module').then(m => m.CreditsModule)
   }
 ];
 

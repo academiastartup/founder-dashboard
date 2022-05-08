@@ -54,3 +54,21 @@
 .cash-in {
     stroke : green;
 }
+
+.filter-and-export-btn {
+    display : inline-block;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border : none;
+    width: 100%;
+    padding : 0.8rem;
+    transition: all 0.3s;
+}
+
+.filter-and-export-btn {
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    gap : 0.8rem;
+}
