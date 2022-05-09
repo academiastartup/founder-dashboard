@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   openModalWindow : boolean = false;
+  openFilterWindow : boolean = false;
+
   dataReadyToShow : boolean = false;
 
   constructor() { }
@@ -20,6 +22,10 @@ export class HomeComponent implements OnInit {
 
   toggleModalWindow() {
     this.openModalWindow = !this.openModalWindow;
+  }
+
+  toggleFilterWindow() {
+    this.openFilterWindow = !this.openFilterWindow;
   }
 
   closeModalWindow() {

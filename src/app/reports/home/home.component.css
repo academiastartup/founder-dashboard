@@ -51,6 +51,7 @@
 }
 
 .filter-and-export-section {
+    position : relative;
     margin-top: 1.2rem;
     display : flex;
     align-items: center;
