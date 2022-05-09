@@ -135,7 +135,7 @@
     gap : 1.2rem;
     width : 25%;
     height: 100vh;
-
+    z-index: 30000;
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
 }
 
