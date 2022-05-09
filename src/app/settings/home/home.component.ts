@@ -7,19 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  openModalWindow : boolean = false;
+  openModalWindow : {open : boolean, label : string} = {open : false, label : ''};
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggleModalWindow() {
-    this.openModalWindow = !this.openModalWindow;
+  toggleModalWindow(label : string) {
+    debugger
+    if (label != '') {
+      this.openModalWindow.open = !this.openModalWindow.open;
+      this.openModalWindow.label = label;
+    } else {
+      this.openModalWindow.open = !this.openModalWindow.open;
+    }
   }
 
   closeModalWindow() {
-    this.openModalWindow = false;
+    this.openModalWindow.open = false;
   }
 
 }

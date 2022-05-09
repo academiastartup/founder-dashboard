@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class EditModalWindowComponent implements OnInit {
 
-  @Input() modalWindowOpen : boolean = false;
+  @Input() modalWindowOpen : {open : boolean, label : string} = {open : false, label : ''};
   @Output() modalWindowClosedEvent = new EventEmitter<any>();
 
   constructor() { }
