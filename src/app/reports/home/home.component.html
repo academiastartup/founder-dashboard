@@ -1,4 +1,7 @@
-<div class="report-component">
+<app-loader *ngIf="!dataReadyToShow"></app-loader>
+
+
+<div class="report-component" *ngIf="dataReadyToShow">
 
     <div class="header-section">
         <h1 class="section-main-title">Relatório das operações</h1>

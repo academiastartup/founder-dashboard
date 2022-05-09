@@ -204,3 +204,8 @@
     border: solid 1px  #e9ecef;
     color : #495057;
 }
+
+/*BETTER POSITION THE LOADER*/
+.notification-body {
+    position : relative;
+}

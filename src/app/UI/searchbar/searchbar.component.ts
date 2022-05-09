@@ -9,11 +9,14 @@ export class SearchbarComponent implements OnInit {
 
   public actionContextMenuClosed : boolean = true;
   public actionNotificationsMenuClosed : boolean = true;
+  public dataReadyToShow : boolean = false;
 
- 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataReadyToShow = true;
+    }, 2000);
   }
 
   toggleContextMenu() {

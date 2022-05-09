@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TableOfReportsComponent } from './auxiliary-components/table-of-reports/table-of-reports.component';
 import { ModalWindowComponent } from './auxiliary-components/modal-window/modal-window.component';
+import { LoaderModule } from '../UI/loader/loader.module';
 
 const routes : Routes = [
   {path : '', component : HomeComponent}
@@ -17,6 +18,7 @@ const routes : Routes = [
   ],
   imports: [
     CommonModule,
+    LoaderModule,
     RouterModule.forChild(routes)
   ]
 })

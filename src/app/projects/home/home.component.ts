@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   openModalWindow : boolean = false;
+  dataReadyToShow : boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataReadyToShow = true;
+    }, 2000);
   }
 
   toggleModalWindow() {

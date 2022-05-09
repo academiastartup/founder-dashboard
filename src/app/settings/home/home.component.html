@@ -1,4 +1,6 @@
-<div class="settings-component">
+<app-loader *ngIf="!dataReadyToShow"></app-loader>
+
+<div class="settings-component" *ngIf="dataReadyToShow">
 
     <div class="user-description">
         <div class="user-name-initial">
