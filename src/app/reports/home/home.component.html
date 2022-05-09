@@ -33,6 +33,10 @@
             </button>
             <p class="filter-text">Sem filtros adicionados</p>
         </div>
+
+        <!--- ///// FILTER WINDOW /////// -->
+        <app-filter-window [modalWindowOpen]="openFilterWindow"></app-filter-window>
+
         <div class="export-section">
             <button class="filter-and-export-btn" (click)="toggleModalWindow()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -41,9 +45,6 @@
                 Baixar tudo
             </button>
         </div>
-
-        <!--- ///// FILTER WINDOW /////// -->
-        <app-filter-window [modalWindowOpen]="openFilterWindow"></app-filter-window>
 
     </div>
 
