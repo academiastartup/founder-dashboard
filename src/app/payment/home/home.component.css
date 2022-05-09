@@ -1,0 +1,134 @@
+.global-container {
+    position : absolute;
+    top : 0;
+    left : 0;
+    width : 100vw;
+    height : 100vh;
+    z-index: 2000;
+    background-color: #fff;
+    padding-top : 3.6rem;
+}
+
+.payment-component {
+    display : flex;
+    flex-direction: column;
+    gap : 3.6rem;
+}
+
+
+/*logo-section*/
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 900;
+}
+
+.logo-section {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.icon {
+    width : 24px;
+}
+
+.logo-section p:last-child {
+    margin-top: -10px;
+    font-size : 12px;
+    letter-spacing: 4px;
+}
+
+.logo-section p:first-child {
+    margin-top : 0;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}
+
+.inline-block {
+    display:inline-block;
+    padding : 0;
+}
+
+.flex {
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-section {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.close-section span {
+    font-size : 1.2rem;
+}
+
+.close-section .icon {
+    width : 3.6rem;
+}
+
+/*payment option section*/
+.payment-option-section {
+    align-self: center;
+}
+
+.section-main-title {
+    font-weight: 400;
+    letter-spacing: 4px;
+    color :  #495057;
+    font-size : 1.8rem;
+    text-align: left;
+}
+
+.body-section {
+    margin-top: 3.6rem;
+    display: flex;
+    flex-direction: column;
+    gap : 0.8rem;
+}
+
+.pay-type {
+    display : grid;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap : 1.2rem;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    border-radius: 10px;
+    padding : 2.4rem;
+    border : solid 1px  #e9ecef;
+}
+
+.ionicon {
+    padding : 1.2rem;
+}
+
+.go-icon > .ionicon {
+    width : 2.4rem;
+}
+
+.pay-type-icon .ionicon {
+    width : 3.6rem;
+    background-color: rgba(28, 127, 214, 0.145);
+    border-radius: 50%;
+}
+
+.pay-type:hover .pay-type-icon .ionicon {
+    background-color: #1c7fd6;
+    color : #fff;
+}
+
+.pay-type:hover .go-icon .ionicon {
+    color : #1c7fd6;
+}
+
+.txt-center {
+    text-align: center;
+}

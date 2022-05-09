@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path : 'creditos',
     loadChildren : () => import('./credits/credits.module').then(m => m.CreditsModule)
+  },
+  {
+    path : 'pagamentos',
+    loadChildren : () => import('./payment/payment.module').then(m => m.PaymentModule)
   }
 ];
 
