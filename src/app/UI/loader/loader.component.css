@@ -14,57 +14,89 @@
    transform: translate(-50%, -50%);
 }
 
-.dot-bricks {
-    position: relative;
-    top: 8px;
-    left: -9999px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: #1c7ed6;
-    color: #1c7ed6;
-    box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
-    animation: dotBricks 2s infinite ease;
+/**
+ * ==============================================
+ * Dot Falling
+ * ==============================================
+ */
+ .dot-falling {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  color: #495057;
+  box-shadow: 9999px 0 0 0 #495057;
+  animation: dotFalling 1s infinite linear;
+  animation-delay: .1s;
 }
 
-@keyframes dotBricks {
-    0% {
-      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
-    }
-    8.333% {
-      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
-    }
-    16.667% {
-      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
-    }
-    25% {
-      box-shadow: 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
-    }
-    33.333% {
-      box-shadow: 10007px 0 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
-    }
-    41.667% {
-      box-shadow: 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6;
-    }
-    50% {
-      box-shadow: 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
-    }
-    58.333% {
-      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
-    }
-    66.666% {
-      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 9991px -16px 0 0 #1c7ed6;
-    }
-    75% {
-      box-shadow: 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
-    }
-    83.333% {
-      box-shadow: 9991px -16px 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
-    }
-    91.667% {
-      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px -16px 0 0 #1c7ed6;
-    }
-    100% {
-      box-shadow: 9991px -16px 0 0 #1c7ed6, 9991px 0 0 0 #1c7ed6, 10007px 0 0 0 #1c7ed6;
-    }
+.dot-falling::before, .dot-falling::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-falling::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  color: #495057;
+  animation: dotFallingBefore 1s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-falling::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  color: #495057;
+  animation: dotFallingAfter 1s infinite linear;
+  animation-delay: .2s;
+}
+
+@keyframes dotFalling {
+  0% {
+    box-shadow: 9999px -15px 0 0 rgba(152, 128, 255, 0);
+  }
+  25%,
+  50%,
+  75% {
+    box-shadow: 9999px 0 0 0 #495057;
+  }
+  100% {
+    box-shadow: 9999px 15px 0 0 rgba(152, 128, 255, 0);
+  }
+}
+
+@keyframes dotFallingBefore {
+  0% {
+    box-shadow: 9984px -15px 0 0 rgba(152, 128, 255, 0);
+  }
+  25%,
+  50%,
+  75% {
+    box-shadow: 9984px 0 0 0 #495057;
+  }
+  100% {
+    box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
+  }
+}
+
+@keyframes dotFallingAfter {
+  0% {
+    box-shadow: 10014px -15px 0 0 rgba(152, 128, 255, 0);
+  }
+  25%,
+  50%,
+  75% {
+    box-shadow: 10014px 0 0 0 #495057;
+  }
+  100% {
+    box-shadow: 10014px 15px 0 0 rgba(152, 128, 255, 0);
+  }
 }

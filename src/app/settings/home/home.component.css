@@ -47,6 +47,8 @@
 
 .edit-btn {
     display : inline-block;
+    border:none;
+    background-color: transparent;
     font-size: 1.4rem;
     text-decoration: none;
 }
@@ -67,4 +69,15 @@
 
 .last-section {
     border-bottom: none;
+}
+
+.shadow {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(233, 236, 239, 0.726);
+    backdrop-filter: blur(4px);
 }

@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  openModalWindow : boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleModalWindow() {
+    this.openModalWindow = !this.openModalWindow;
+  }
+
+  closeModalWindow() {
+    this.openModalWindow = false;
   }
 
 }
