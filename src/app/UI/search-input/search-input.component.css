@@ -1,0 +1,27 @@
+.input-field {
+    width : 100%;
+    border : none;
+    padding : 0.8rem;
+    color : #495057;
+    font-size: 1.6rem;
+}
+
+.search-bar-icon {
+    width : 2.4rem;
+    stroke : lightgray;
+}
+
+.search-bar-and-input-field {
+    display : flex;
+    align-items : center;
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+}
+
+.active {
+    stroke : #1c7ed6;
+}
+
+.input-field:focus {
+    outline : none;
+}

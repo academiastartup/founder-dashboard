@@ -9,7 +9,11 @@ export class SearchbarComponent implements OnInit {
 
   public actionContextMenuClosed : boolean = true;
   public actionNotificationsMenuClosed : boolean = true;
+  public searchResultWindowClosed : boolean = true;
   public dataReadyToShow : boolean = false;
+
+  public userTypedInSearcData : string = '';
+
 
   constructor() { }
 
@@ -28,5 +32,11 @@ export class SearchbarComponent implements OnInit {
     this.actionContextMenuClosed = true;
   }
 
+
+  ///////// LIVE SEARCH CODE ///////////
+  onTextChange(value : string) {
+    this.searchResultWindowClosed = false;
+    this.userTypedInSearcData = value;
+  }
 
 }

@@ -58,20 +58,12 @@
 
 .search-form {
     display : flex;
-    gap : 1.6rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .search-input {
     width: 100%;
-}
-
-.input-field {
-    width : 100%;
-    border : none;
-    font-size: 1.6rem;
-    height: 30px;
 }
 
 .input-field:active {
@@ -203,6 +195,10 @@
     background-color: #fff;
     border: solid 1px  #e9ecef;
     color : #495057;
+}
+
+.relative-positioned {
+    position : relative;
 }
 
 /*BETTER POSITION THE LOADER*/
