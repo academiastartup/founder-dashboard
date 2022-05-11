@@ -26,6 +26,18 @@ const routes: Routes = [
   {
     path : 'pagamentos',
     loadChildren : () => import('./payment/payment.module').then(m => m.PaymentModule)
+  },
+  {
+    path : 'investidores',
+    loadChildren : () => import('./investors/investors.module').then(m => m.InvestorsModule)
+  },
+  {
+    path : 'notificacoes',
+    loadChildren : () => import('./notifications/notifications.module').then(m => m.NotificationsModule)
+  },
+  {
+    path : 'eventos',
+    loadChildren : () => import('./events/events.module').then(m => m.EventsModule)
   }
 ];
 
