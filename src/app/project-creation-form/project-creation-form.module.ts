@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { StepTrackerModule } from '../UI/step-tracker/step-tracker.module';
 
 const routes : Routes = [
@@ -20,4 +20,4 @@ const routes : Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class PaymentModule { }
+export class ProjectCreationFormModule { }

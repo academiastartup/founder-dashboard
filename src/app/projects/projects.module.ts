@@ -6,7 +6,16 @@ import { FormModalWindowComponent } from './auxiliary-components/form-modal-wind
 import { LoaderModule } from '../UI/loader/loader.module';
 
 const routes : Routes = [
-  {path : '', component : HomeComponent}
+  {
+    path : '', 
+    component : HomeComponent,
+    children : [
+      {
+        path : 'criar-projecto',
+        loadChildren : () => import('../project-creation-form/project-creation-form.module').then(m => m.ProjectCreationFormModule)
+      }
+    ]
+  }
 ]
 
 @NgModule({

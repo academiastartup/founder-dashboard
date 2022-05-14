@@ -1,0 +1,108 @@
+<div class="global-container">
+    <div class="payment-component container">
+
+        <!-- 
+            //// LOGO AND CLOSE WINDOW SECTION ////
+        -->
+        <div class="logo-and-close-icon flex">
+
+            <div class="logo-section">
+                <svg width="" class="icon" viewBox="0 0 212 284" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32.8674" cy="32.8674" r="32.8674" fill="#2C322A"/>
+                    <circle cx="32.8674" cy="105.622" r="32.8674" fill="#2C322A"/>
+                    <circle cx="105.622" cy="105.622" r="32.8674" fill="#2C322A"/>
+                    <circle cx="32.8674" cy="178.378" r="32.8674" fill="#2C322A"/>
+                    <circle cx="32.8674" cy="251.133" r="32.8674" fill="#2C322A"/>
+                    <circle cx="105.622" cy="32.8674" r="32.8674" fill="#2C322A"/>
+                    <circle cx="178.378" cy="32.8674" r="32.8674" fill="#2C322A"/>
+                </svg>  
+    
+                <a href="" class="inline-block" style="text-decoration: none; color : #212529">
+                    <p>Academia</p>
+                    <p>$tartup</p>
+                </a>
+            </div>
+
+            <div class="close-section">
+                <svg xmlns="http://www.w3.org/2000/svg"  class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span class="inline-block">Fechar janela</span>
+            </div>
+
+        </div>
+
+
+        <!-- 
+            //// PAYMENT SECTION ////
+        -->    
+        <div class="payment-option-section">
+            <div class="header-section">
+                <app-step-tracker></app-step-tracker>
+                <h1 class="section-main-title txt-center">ESCOLHA O TIPO DE PROJECTO</h1>
+
+            </div>
+
+            <div class="body-section">
+                <router-outlet></router-outlet>
+                <!-- //// TYPE 01 ////-->
+                <div class="pay-type">
+                    <div class="pay-type-icon">                                   
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Bag Handle</title><path d="M80 176a16 16 0 00-16 16v216c0 30.24 25.76 56 56 56h272c30.24 0 56-24.51 56-54.75V192a16 16 0 00-16-16zM160 176v-32a96 96 0 0196-96h0a96 96 0 0196 96v32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M160 224v16a96 96 0 0096 96h0a96 96 0 0096-96v-16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </div>
+                    <div class="pay-type-text">
+                        <p class="section-main-title">E-commerce</p>
+                    </div>
+                    <div class="go-icon">          
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                    </div>
+                </div>
+
+                <!-- //// TYPE 01 ////-->
+                <div class="pay-type">
+                    <div class="pay-type-icon">                                         
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Megaphone</title><path d="M407.94 52.22S321.3 160 240 160H80a16 16 0 00-16 16v96a16 16 0 0016 16h160c81.3 0 167.94 108.23 167.94 108.23 6.06 8 24.06 2.52 24.06-9.83V62c0-12.31-17-18.82-24.06-9.78zM64 256s-16-6-16-32 16-32 16-32M448 246s16-4.33 16-22-16-22-16-22M256 160v128M112 160v128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M144 288v168a8 8 0 008 8h53a16 16 0 0015.29-20.73C211.91 416.39 192 386.08 192 336h16a16 16 0 0016-16v-16a16 16 0 00-16-16h-16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </div>
+                    <div class="pay-type-text">
+                        <p class="section-main-title">Campanha publicitária</p>
+                    </div>
+                    <div class="go-icon">          
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                    </div>
+                </div>
+
+                <!--//// TYPE 01 ////-->
+                <div class="pay-type">
+                    <div class="pay-type-icon">                               
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Cash</title><rect x="32" y="80" width="448" height="256" rx="16" ry="16" transform="rotate(180 256 208)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M64 384h384M96 432h320"/><circle cx="256" cy="208" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80M480 256a80 80 0 00-80 80M32 256a80 80 0 0180 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </div>
+                    <div class="pay-type-text">
+                        <p class="section-main-title">Pedir fundos</p>
+                    </div>
+                    <div class="go-icon">          
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                    </div>
+                </div>
+
+                <!--//// TYPE 01 ////-->
+                <div class="pay-type">
+                    <div class="pay-type-icon">                                         
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Person</title><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                    </div>
+                    <div class="pay-type-text">
+                        <p class="section-main-title">Projecto Personalizado</p>
+                    </div>
+                    <div class="go-icon">          
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+        
+
+    </div>
+</div>
+
+

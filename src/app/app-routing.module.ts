@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren : () => import('./notifications/notifications.module').then(m => m.NotificationsModule)
   },
   {
+    path : 'criar-projecto',
+    loadChildren : () => import('./project-creation-form/project-creation-form.module').then(m => m.ProjectCreationFormModule)
+  },
+  {
     path : 'eventos',
     loadChildren : () => import('./events/events.module').then(m => m.EventsModule)
   }
