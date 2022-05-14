@@ -1,1 +1,4 @@
-<app-loader></app-loader>
+<app-loader *ngIf="!dataReadyToShow"></app-loader>
+<app-no-data-component  *ngIf="dataReadyToShow"></app-no-data-component>
+
+

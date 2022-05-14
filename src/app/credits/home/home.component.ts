@@ -9,7 +9,12 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  dataReadyToShow : boolean = false;
+
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataReadyToShow = true;
+    }, 2000);
   }
 
 }

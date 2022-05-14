@@ -1,0 +1,53 @@
+.no-data-component {
+    display : flex;
+    flex-direction: column;
+    gap : 3.6rem;
+    padding-top : 9.0rem;
+    justify-content : center;
+    align-items : center;
+}
+
+.section-main-title {
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color :  #495057;
+    font-size : 1.8rem;
+    text-align: left;
+}
+
+.filter-and-export-btn {
+    display : inline-block;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border : none;
+    padding : 0.8rem;
+    transition: all 0.3s;
+    font-size : 1.4rem;
+    text-decoration: none;
+}
+
+.useful-links {
+    display : flex;
+    gap : 0.8rem;
+}
+
+.warning-box {
+    display : flex;
+    border: dashed 1px #d9480f;
+    padding : 0.8rem;
+    border-radius: 5px;
+    align-items: center;
+    gap : 0.8rem;
+}
+
+.warning-box p {
+    font-size: 1.6rem;
+    color :#d9480f;
+}
+
+.ionicon {
+    width : 2.4rem;
+    color : #d9480f;
+}
