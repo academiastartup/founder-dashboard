@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StepTrackerComponent implements OnInit {
 
   @Input() stepsNumber : number = 0;
+  @Input() stepCompleted! : Array<boolean>;
+
   stepsNumberArray : Array<number> = [];
 
   constructor() { }
@@ -15,7 +17,6 @@ export class StepTrackerComponent implements OnInit {
   ngOnInit(): void {
     this.getArrayFromNumber();
   }
-
 
   /*Utility to transform a number into a vector with as many elements as the number it gets*/
   getArrayFromNumber() {
