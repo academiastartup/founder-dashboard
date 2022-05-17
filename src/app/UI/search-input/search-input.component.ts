@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 })
 export class SearchInputComponent implements OnInit, OnDestroy {
 
-  @Input() initialValue: string = '';
+  @Input() placeholder: string = '';
   @Input() debounceTime = 300;
 
   @Output() textChange = new EventEmitter<string>();

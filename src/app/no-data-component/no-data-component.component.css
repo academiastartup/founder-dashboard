@@ -1,8 +1,7 @@
 .no-data-component {
     display : flex;
     flex-direction: column;
-    gap : 3.6rem;
-    padding-top : 9.0rem;
+    gap : 2.4rem;
     justify-content : center;
     align-items : center;
 }

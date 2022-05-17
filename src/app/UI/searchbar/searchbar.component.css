@@ -197,10 +197,6 @@
     color : #495057;
 }
 
-.relative-positioned {
-    position : relative;
-}
-
 /*BETTER POSITION THE LOADER*/
 .notification-body {
     position : relative;

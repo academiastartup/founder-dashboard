@@ -15,6 +15,14 @@
     gap : 3.6rem;
 }
 
+.body-section {
+    margin-top: 3.6rem;
+    display: flex;
+    flex-direction: column;
+    gap : 0.8rem;
+}
+
+
 
 /*logo-section*/
 p {

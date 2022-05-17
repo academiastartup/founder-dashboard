@@ -9,12 +9,24 @@ import { CommunicationServiceService } from 'src/app/shared-services/communicati
 export class PayTeamsComponent implements OnInit {
 
   constructor(private communicationServiceService : CommunicationServiceService) { }
+  public userTypedInSearcData : string = '';
+
+  
 
   ngOnInit(): void {
   }
 
+  onTextChange(value : string) {
+    this.userTypedInSearcData = value;
+  }
+
   goNextStep() {
-    this.communicationServiceService.firstPayOptionSelected.next(2);
+    this.communicationServiceService.firstPayOptionSelected.next(
+      {
+        stepFilled : 2, 
+        mainPageTitle : 'ESTABELEÇA A QUANTIA'
+      }
+    );
   }
 
 }

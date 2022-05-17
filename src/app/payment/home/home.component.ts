@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   /* ////////  SUBSCRIPTIONS  //////// */
   getPayOptionSelectedSubscription! : Subscription;
 
+  pageMainTitle : string = 'ESCOLHA O TIPO DE OPERAÇÃO DESEJADA';
 
   /* ///////   */
   stepsFilled : Array<boolean> = [
@@ -29,10 +30,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    // reset the steps counter
+    this.stepsFilled = [
+      false, false, false, false
+    ]
+
     this.getPayOptionSelectedSubscription = this.comunicationService.getfirstPayOptionSelected().
-      subscribe((value) => {
-        
-        switch(value) {
+      subscribe((value : any) => {
+        debugger
+        this.pageMainTitle = value.mainPageTitle;
+
+        switch(value.stepFilled) {
           // step 01 has been completed
           case 1:
             this.stepsFilled[0] = true;

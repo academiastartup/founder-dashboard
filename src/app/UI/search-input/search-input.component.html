@@ -10,8 +10,7 @@
         <input 
             class="input-field" 
             type="text" 
-            placeholder="Procure por projectos, equipas, créditos e mais ..."
-            [value]="initialValue"
+            placeholder={{placeholder}}
             (input)="onInput($event)"
             (focus)="onFocus()"
             (blur)="notOnFocus()"

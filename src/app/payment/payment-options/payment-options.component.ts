@@ -14,21 +14,29 @@ export class PaymentOptionsComponent implements OnInit {
     private communicationServiceService : CommunicationServiceService
   ) { }
 
+  objForPaySelected : {stepFilled : number, mainPageTitle : string} = {
+    stepFilled : 1, 
+    mainPageTitle : ''
+  };
+
   ngOnInit(): void {
   }
 
   goToRecurringPaymentPage() {
-    this.communicationServiceService.firstPayOptionSelected.next(1);
+    this.objForPaySelected.mainPageTitle = 'PREENCHA OS CAMPOS ABAIXO, PARA INCIAR PAGAMENTO RECORRENTE';
+    this.communicationServiceService.firstPayOptionSelected.next(this.objForPaySelected);
     this.router.navigateByUrl('/pagamentos/pagamento-recorrente');
   }
 
   goToPayTeamsPage() {
-    this.communicationServiceService.firstPayOptionSelected.next(1);
+    this.objForPaySelected.mainPageTitle = 'SELECIONE UMA OU MAIS PESSOAS E COMEÇE A PAGAR';
+    this.communicationServiceService.firstPayOptionSelected.next(this.objForPaySelected);
     this.router.navigateByUrl('/pagamentos/pagar-equipas');
   }
 
   goToOtherPaymentPage() {
-    this.communicationServiceService.firstPayOptionSelected.next(1);
+    this.objForPaySelected.mainPageTitle = 'PREENCHA OS CAMPOS ABAIXO, PARA INCIAR OUTROS PAGAMENTOS';
+    this.communicationServiceService.firstPayOptionSelected.next(this.objForPaySelected);
     this.router.navigateByUrl('/pagamentos/outros-pagamentos');
   }
 

@@ -7,6 +7,10 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
 import { RecurringPaymentComponent } from './recurring-payment/recurring-payment.component';
 import { PayTeamsComponent } from './pay-teams/pay-teams.component';
 import { OtherPaymentsComponent } from './other-payments/other-payments.component';
+import { SearchInputModule } from '../UI/search-input/search-input.module';
+import { SearchResultWindowModule } from '../UI/search-result-window/search-result-window.module';
+import { NoDataComponentModule } from '../no-data-component/no-data-component.module';
+import { CodeInsertModalWindowComponent } from './auxiliary-component/code-insert-modal-window/code-insert-modal-window.component';
 
 const routes : Routes = [
   {
@@ -35,6 +39,7 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
+    CodeInsertModalWindowComponent,
     RecurringPaymentComponent,
     PayTeamsComponent,
     OtherPaymentsComponent
@@ -42,6 +47,9 @@ const routes : Routes = [
   imports: [
     CommonModule,
     StepTrackerModule,
+    NoDataComponentModule,
+    SearchResultWindowModule,
+    SearchInputModule,
     RouterModule.forChild(routes)
   ]
 })

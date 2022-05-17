@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-no-data-component',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./no-data-component.component.css']
 })
 export class NoDataComponentComponent implements OnInit {
+
+  @Input() noDataMsg : string = 'SEM INFORMAÇÕES PARA MOSTRAR';
+  @Input() showAditionalLinks : boolean = true;
 
   constructor() { }
 

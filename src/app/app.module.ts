@@ -10,8 +10,8 @@ import { CreditBalanceComponent } from './Home/UI/credit-balance/credit-balance.
 import { TransactionComponent } from './Home/UI/transaction/transaction.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoaderModule } from './UI/loader/loader.module';
-import { SearchInputComponent } from './UI/search-input/search-input.component';
-import { SearchResultWindowComponent } from './UI/search-result-window/search-result-window.component';
+import { SearchInputModule } from './UI/search-input/search-input.module';
+import { SearchResultWindowModule } from './UI/search-result-window/search-result-window.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +21,13 @@ import { SearchResultWindowComponent } from './UI/search-result-window/search-re
     SummaryComponent,
     MainComponent,
     CreditBalanceComponent,
-    TransactionComponent,
-    SearchInputComponent,
-    SearchResultWindowComponent
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     LoaderModule,
+    SearchResultWindowModule,
+    SearchInputModule,
     AppRoutingModule,
     RouterModule,
   ],

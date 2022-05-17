@@ -14,7 +14,12 @@ export class RecurringPaymentComponent implements OnInit {
   }
 
   goNextStep() {
-    this.communicationServiceService.firstPayOptionSelected.next(2);
+    this.communicationServiceService.firstPayOptionSelected.next(
+      {
+        stepFilled : 2, 
+        mainPageTitle : 'POR FAVOR, PREENCHA OS DETALHES DA OPERAÇÃO'
+      }
+    );
   }
 
 }
