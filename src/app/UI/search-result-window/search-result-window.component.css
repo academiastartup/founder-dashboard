@@ -11,6 +11,12 @@
     flex-direction: column;
 }
 
+.results-box {
+    display: flex;
+    flex-direction: column;
+    border-top : solid 1px  #e9ecef;
+}
+
 
 .section-main-title {
     font-weight: 400;

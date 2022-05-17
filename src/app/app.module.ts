@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoaderModule } from './UI/loader/loader.module';
 import { SearchInputModule } from './UI/search-input/search-input.module';
 import { SearchResultWindowModule } from './UI/search-result-window/search-result-window.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TransactionsFromSearchResultComponent } from './search-result-components/transactions-from-search-result/transactions-from-search-result.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +23,17 @@ import { SearchResultWindowModule } from './UI/search-result-window/search-resul
     SummaryComponent,
     MainComponent,
     CreditBalanceComponent,
-    TransactionComponent
+    TransactionComponent,
+    TransactionsFromSearchResultComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     LoaderModule,
     SearchResultWindowModule,
     SearchInputModule,
     AppRoutingModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,21 @@
+<div class="user-row-component" (click)="selectRow()" [class.active]="!showSelectIcon">
+    <div class="user-row">
+        <div class="photo-and-name">
+            <div class="user-photo"></div>
+            <div class="user-personal-details">
+                <p class="section-main-title">Luís Tchitue</p>
+                <p class="section-main-title warning">Pagamento Pendente</p>
+            </div>
+        </div>
+        
+        <div class="select-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" *ngIf="showSelectIcon"  class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!showSelectIcon" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+    </div>
+</div>
+

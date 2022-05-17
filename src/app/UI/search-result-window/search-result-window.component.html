@@ -1,5 +1,13 @@
 <div class="search-result-component" *ngIf="userTypedInSearcData != ''">
     <p class="section-main-title">Resultados</p>
+
+    <!-- THE RESULTS FROM THE SEARCH WILL BE DISPLAYED HERE -->
+    <div class="results-box">
+
+        <app-user-from-search-result *ngFor="let i of [1,2,3,4]"></app-user-from-search-result>
+
+    </div>
+
     <div class="search-result">
         <p class="section-main-title default-search">Procurar por '<a href="#">{{userTypedInSearcData}}</a>' em todas ás páginas</p>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunicationServiceService } from 'src/app/shared-services/communication-service.service';
+import { HttpServiceService } from 'src/app/shared-services/http-service.service';
 
 @Component({
   selector: 'app-pay-teams',
@@ -8,7 +9,10 @@ import { CommunicationServiceService } from 'src/app/shared-services/communicati
 })
 export class PayTeamsComponent implements OnInit {
 
-  constructor(private communicationServiceService : CommunicationServiceService) { }
+  constructor(
+    private communicationServiceService : CommunicationServiceService,
+    private httpService : HttpServiceService
+  ) { }
   public userTypedInSearcData : string = '';
 
   
