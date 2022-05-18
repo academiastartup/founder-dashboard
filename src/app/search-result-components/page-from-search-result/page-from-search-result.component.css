@@ -17,7 +17,7 @@
     width : 40px;
     height : 40px;
     border-radius: 50%;
-    background-color: #3bc9db;
+    background-color: #fcc419;
 }
 
 .user-personal-details {
@@ -37,12 +37,12 @@
     stroke : #1c7ed6;
 }
 
-.select-btn {
-    align-self: flex-end;
-}
-
 .icon-transaction {
     color : #fff;
+}
+
+.select-btn {
+    align-self: flex-end;
 }
 
 .user-row-component {
@@ -53,10 +53,6 @@
     display : flex;
     gap : 0.8rem;
     align-items: center;
-}
-
-.active {
-    background-color: aliceblue;
 }
 
 .user-photo {

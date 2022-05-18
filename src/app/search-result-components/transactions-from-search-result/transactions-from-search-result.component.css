@@ -1,0 +1,63 @@
+.section-main-title {
+    font-weight: 400;
+    color : #8f8f8f;
+    font-size : 1.4rem;
+    text-align: left;
+}
+
+.user-row {
+    display : flex;
+    cursor: pointer;
+    gap : 0.8rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-photo {
+    width : 40px;
+    height : 40px;
+    border-radius: 50%;
+    background-color:  #38d9a9;
+}
+
+.user-personal-details {
+    display : flex;
+    gap : 0.6rem;
+    flex-direction: column;
+}
+
+.warning {
+    font-weight: 500;
+    color : orange;
+    font-size: 1.2rem;
+}
+
+.icon {
+    width : 2.4rem;
+    stroke : #1c7ed6;
+}
+
+.icon-transaction {
+    color : #fff;
+}
+
+.select-btn {
+    align-self: flex-end;
+}
+
+.user-row-component {
+    padding : 1.8rem;
+}
+
+.photo-and-name {
+    display : flex;
+    gap : 0.8rem;
+    align-items: center;
+}
+
+.user-photo {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

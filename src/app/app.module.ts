@@ -13,7 +13,6 @@ import { LoaderModule } from './UI/loader/loader.module';
 import { SearchInputModule } from './UI/search-input/search-input.module';
 import { SearchResultWindowModule } from './UI/search-result-window/search-result-window.module';
 import { HttpClientModule } from '@angular/common/http';
-import { TransactionsFromSearchResultComponent } from './search-result-components/transactions-from-search-result/transactions-from-search-result.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { TransactionsFromSearchResultComponent } from './search-result-component
     SummaryComponent,
     MainComponent,
     CreditBalanceComponent,
-    TransactionComponent,
-    TransactionsFromSearchResultComponent
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
