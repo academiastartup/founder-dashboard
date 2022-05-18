@@ -4,8 +4,7 @@
     top : 40px;
     left : 0;
 
-    width : 55%;
-    
+        
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
     background-color: #fff;
     border-radius: 10px;
@@ -13,7 +12,7 @@
 
     /*layout rules*/
     display : grid;
-    grid-template-columns: 4fr 6fr;
+    grid-template-columns: 4fr 7fr;
 }
 
 .ionicon {
@@ -29,13 +28,13 @@
     display : flex;
     padding : 1.2rem;
     flex-direction: column;
-    gap : 0.6rem;
 }
 
 .filter {
     display : flex;
     justify-content: space-between;
     cursor: pointer;
+    border: solid 2px transparent;
     padding : 1.2rem;
     align-items: center;   
 }
@@ -61,4 +60,14 @@
 .filter:hover {
     background-color: rgba(28, 127, 214, 0.0845);
     border-radius : 10px;
+}
+
+.active {
+    border: solid 2px #1c7ed6;
+    background-color: rgba(28, 127, 214, 0.0845);
+    border-radius : 10px;
+}
+
+.active .ionicon {
+    display : block;
 }

@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { TableOfReportsComponent } from './auxiliary-components/table-of-reports/table-of-reports.component';
 import { ModalWindowComponent } from './auxiliary-components/modal-window/modal-window.component';
 import { LoaderModule } from '../UI/loader/loader.module';
-import { FilterWindowComponent } from './auxiliary-components/filter-window/filter-window.component';
+import { FilterWindowModule } from './auxiliary-components/filter-window/filter-window.module';
 
 const routes : Routes = [
   {path : '', component : HomeComponent}
@@ -15,12 +15,12 @@ const routes : Routes = [
   declarations: [
     HomeComponent,
     TableOfReportsComponent,
-    ModalWindowComponent,
-    FilterWindowComponent
+    ModalWindowComponent
   ],
   imports: [
     CommonModule,
     LoaderModule,
+    FilterWindowModule,
     RouterModule.forChild(routes)
   ]
 })
