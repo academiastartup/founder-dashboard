@@ -6,11 +6,12 @@
     height : 100vh;
     z-index: 2000;
     background-color: #fff;
-    padding-top : 3.6rem;
+    
 }
 
 .payment-component {
     display : flex;
+    padding : 1.6rem 7.0rem 0 7.0rem;
     flex-direction: column;
     gap : 3.6rem;
 }

@@ -76,19 +76,59 @@ p {
 }
 
 /*LOGO*/
-.logo {
-    padding-top : 1.6rem;
+
+/*logo-section*/
+.logo-section {
+    display : flex;
+    padding-top: 1.6rem;
+    padding-bottom: 3.6rem;
+    align-items: center;
+    justify-content: center;
     text-transform: uppercase;
 }
 
-.logo p:last-child {
+.icon {
+    width : 24px;
+}
+
+.logo-section p:last-child {
     margin-top: -10px;
     font-size : 12px;
     letter-spacing: 4px;
 }
 
-.logo p:first-child {
+.logo-section p:first-child {
     margin-top : 0;
     margin-bottom: 0;
     letter-spacing: 1px;
+}
+
+.inline-block {
+    display:inline-block;
+    padding : 0;
+}
+
+.flex {
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-section {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.close-section span {
+    font-size : 1.2rem;
+}
+
+.close-section .icon {
+    width : 3.6rem;
+}
+
+.logo-text {
+    margin : 0;
 }

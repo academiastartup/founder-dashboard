@@ -4,10 +4,22 @@
         //// LOGO SECTION ////
      -->
     <div class="logo container">
-        <a href="" style="text-decoration: none; color : #212529">
-            <p>Academia</p>
-            <p>Startup</p>
-        </a>
+        <div class="logo-section">
+            <svg width="" class="icon" viewBox="0 0 212 284" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32.8674" cy="32.8674" r="32.8674" fill="#2C322A"/>
+                <circle cx="32.8674" cy="105.622" r="32.8674" fill="#2C322A"/>
+                <circle cx="105.622" cy="105.622" r="32.8674" fill="#2C322A"/>
+                <circle cx="32.8674" cy="178.378" r="32.8674" fill="#2C322A"/>
+                <circle cx="32.8674" cy="251.133" r="32.8674" fill="#2C322A"/>
+                <circle cx="105.622" cy="32.8674" r="32.8674" fill="#2C322A"/>
+                <circle cx="178.378" cy="32.8674" r="32.8674" fill="#2C322A"/>
+            </svg>  
+
+            <a href="" class="inline-block" style="text-decoration: none; color : #212529">
+                <p class="logo-text">Academia</p>
+                <p class="logo-text">Startup</p>
+            </a>
+        </div>
     </div>
 
     <!-- 
@@ -17,31 +29,34 @@
         <ul class="list-of-links">
             
             <li class="link-list">
-                <a class="link container active-link" routerLink="/">Início</a>
+                <a class="link container" 
+                    [routerLink]="['/']" [routerLinkActive]="['active-link']"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >Início</a>
             </li>
 
             <li class="link-list">
-                <a class="link container" routerLink="/creditos">Créditos</a>
+                <a class="link container" [routerLink]="['/creditos']" [routerLinkActive]="['active-link']">Créditos</a>
             </li>
 
             <li class="link-list">
-                <a class="link container" routerLink="/relatorios">Relatórios</a>
+                <a class="link container" [routerLink]="['/relatorios']" [routerLinkActive]="['active-link']">Relatórios</a>
             </li>
 
             <li class="link-list">
-                <a class="link container" routerLink="/definicoes">Definições</a>
+                <a class="link container" [routerLink]="['/definicoes']" [routerLinkActive]="['active-link']">Definições</a>
             </li>
 
             <li class="link-list">
-                <a class="link container" routerLink="/eventos">Eventos</a>
+                <a class="link container" [routerLink]="['/eventos']" [routerLinkActive]="['active-link']">Eventos</a>
             </li>
             
             <li class="link-list">
-                <a class="link container" routerLink="/projetos">Projectos</a>
+                <a class="link container" [routerLink]="['/projetos']" [routerLinkActive]="['active-link']">Projectos</a>
             </li>
 
             <li class="link-list">
-                <a class="link container" routerLink="/investidores">Investidores</a>
+                <a class="link container" [routerLink]="['/investidores']" [routerLinkActive]="['active-link']">Investidores</a>
             </li>
 
             <li class="link-list relative-positioned">
