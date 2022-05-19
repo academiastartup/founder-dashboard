@@ -1,36 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscriber } from 'rxjs';
+import { ServiceFilterMessengerService } from '../service-messengers/service-filter-messenger.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  openModalWindow : boolean = false;
+  openDownloadReportModalWindow : boolean = false;
   openFilterWindow : boolean = false;
+  activeFilters : Array<{name : string, type : string}> = [];
 
   dataReadyToShow : boolean = false;
 
-  constructor() { }
+  // vector to store subscriptions
+  filterSubscriber : any = [];
+
+  constructor(
+    private serviceFilterMessengerService : ServiceFilterMessengerService
+  ) { }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.dataReadyToShow = true;
     }, 2000);
+
+    this.filterSubscriber = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
+      subscribe((value : any) => {
+        this.activeFilters.push(value)
+      });
   }
 
-  toggleModalWindow() {
-    this.openModalWindow = !this.openModalWindow;
+  toggleDownloadReportModalWindow() {
+    this.openDownloadReportModalWindow = !this.openDownloadReportModalWindow;
   }
 
   toggleFilterWindow() {
     this.openFilterWindow = !this.openFilterWindow;
   }
 
-  closeModalWindow() {
-    this.openModalWindow = false;
+  removeFilter(filterId : number) {
+    this.activeFilters.splice(filterId, 1);
   }
 
+  closeDownloadReportModalWindow() {
+    this.openDownloadReportModalWindow = false;
+  }
+
+  ngOnDestroy(): void {
+    this.filterSubscriber.unsubscribe();
+  }
+
+  
 
 }

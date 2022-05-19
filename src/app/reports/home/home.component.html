@@ -34,29 +34,23 @@
             <span class="vertical-bar"></span>
 
             <!-- ////// active filters go here /////// -->
-            <button class="filter-and-export-btn filter">
-                <p>1 - 31 de Janeiro 2022</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <button class="filter-and-export-btn filter"
+                *ngFor="let filter of activeFilters; let id = index"
+                >
+                <p>{{filter.name}}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" (click)="removeFilter(id)" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-
-            <button class="filter-and-export-btn filter">
-                <p>Pendentes</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-
-
-            <p class="filter-text">Sem filtros adicionados</p>
+          
+            <p class="filter-text" *ngIf="activeFilters.length == 0">Sem filtros adicionados</p>
         </div>
 
         <!--- ///// FILTER WINDOW /////// -->
         <app-filter-window [modalWindowOpen]="openFilterWindow"></app-filter-window>
 
         <div class="export-section">
-            <button class="filter-and-export-btn" (click)="toggleModalWindow()">
+            <button class="filter-and-export-btn" (click)="toggleDownloadReportModalWindow()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -66,14 +60,14 @@
 
     </div>
 
-    <app-table-of-reports (exportReportEvent)="toggleModalWindow()"></app-table-of-reports>
+    <app-table-of-reports (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
     
 </div>
 
 
 <!-- ///// MODAL WINDOW FOR FILE DOWNLOAD ///// -->
-<app-modal-window *ngIf="openModalWindow" [modalWindowOpen]="openModalWindow" (modalWindowClosedEvent)="toggleModalWindow()"></app-modal-window>
+<app-modal-window *ngIf="openDownloadReportModalWindow" [modalWindowOpen]="openDownloadReportModalWindow" (modalWindowClosedEvent)="toggleDownloadReportModalWindow()"></app-modal-window>
 
 <!-- ///// SHADOW TO HIGHLIGHT THE MODAL WINDOW -->
-<div class="shadow" *ngIf="openModalWindow" (click)="closeModalWindow()"></div>
+<div class="shadow" *ngIf="openDownloadReportModalWindow" (click)="closeDownloadReportModalWindow()"></div>
 

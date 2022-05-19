@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceFilterMessengerService } from 'src/app/reports/service-messengers/service-filter-messenger.service';
 
 @Component({
   selector: 'app-date-filter-component',
@@ -10,7 +11,9 @@ export class DateFilterComponentComponent implements OnInit {
   public showDefaultFilterWindw : boolean = false;
   public currentFilterTitle : string = 'Tudo';
 
-  constructor() { }
+  constructor(
+    private serviceFilterMessengerService : ServiceFilterMessengerService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +23,11 @@ export class DateFilterComponentComponent implements OnInit {
   }
 
   setFilter(filterTitle : string) {
-    this.currentFilterTitle = filterTitle;
+    this.serviceFilterMessengerService.filterDataToSend.next(
+      {
+        name : filterTitle,
+        type : 'date'
+      }
+    );
   }
 }
