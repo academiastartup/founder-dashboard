@@ -29,7 +29,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.filterSubscriber = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
       subscribe((value : any) => {
-        this.activeFilters.push(value)
+        let newFilter = value;
+
+        // ensures mutual exclusivity for same type filter
+        this.activeFilters = this.activeFilters.filter(filter => filter.type != newFilter.type);
+        this.activeFilters.push(newFilter);
       });
   }
 
