@@ -1,0 +1,21 @@
+.status-filter-component {
+    display : flex;
+    flex-direction: column;
+    gap : 2.4rem;
+    padding : 1.8rem;
+}
+
+.status {
+    display : flex;
+    gap : 1.2rem;
+}
+
+.status-title {
+    font-size: 1.6rem;
+}
+
+.status-description {
+    display: flex;
+    flex-direction: column;
+    gap : 0.6rem;
+}

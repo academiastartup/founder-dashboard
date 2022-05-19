@@ -4,6 +4,8 @@
     top : 40px;
     left : 0;
 
+    width : 600px;
+    height : 400px;
         
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
     background-color: #fff;
@@ -34,7 +36,6 @@
     display : flex;
     justify-content: space-between;
     cursor: pointer;
-    border: solid 2px transparent;
     padding : 1.2rem;
     align-items: center;   
 }
@@ -63,7 +64,6 @@
 }
 
 .active {
-    border: solid 2px #1c7ed6;
     background-color: rgba(28, 127, 214, 0.0845);
     border-radius : 10px;
 }

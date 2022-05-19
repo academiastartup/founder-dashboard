@@ -1,13 +1,16 @@
-<div class="search-result-component" *ngIf="userTypedInSearcData != ''">
+<div class="search-result-component" *ngIf="userTypedInSearcData != ''" 
+    [ngStyle]="{'width' : getWindwWidth()}"
+    >
     <p class="section-main-title">Resultados</p>
 
     <!-- THE RESULTS FROM THE SEARCH WILL BE DISPLAYED HERE -->
     <div class="results-box">
 
         <app-user-from-search-result></app-user-from-search-result>
+        <!--
         <app-transactions-from-search-result></app-transactions-from-search-result>
         <app-page-from-search-result></app-page-from-search-result>
-
+        -->
     </div>
 
     <div class="search-result">

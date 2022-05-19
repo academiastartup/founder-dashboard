@@ -2,7 +2,7 @@
     
     <div class="search-input-area relative-positioned">
         <app-search-input (textChange)="onTextChange($event)" [placeholder]="'Procure pelos beneficiários aqui'"></app-search-input>
-        <app-search-result-window [userTypedInSearcData]="userTypedInSearcData"></app-search-result-window>
+        <app-search-result-window [searchResultWindwWidth]="100" [userTypedInSearcData]="userTypedInSearcData"></app-search-result-window>
     </div>
 
     <div class="beneficiary-container">
