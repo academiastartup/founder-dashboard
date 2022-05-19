@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceFilterMessengerService } from 'src/app/reports/service-messengers/service-filter-messenger.service';
+
 
 @Component({
   selector: 'app-status-filter-component',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusFilterComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private serviceFilterMessengerService : ServiceFilterMessengerService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  setFilter(filterTitle : string) {
+    this.serviceFilterMessengerService.filterDataToSend.next(
+      {
+        name : filterTitle,
+        type : 'status'
+      }
+    );
   }
 
 }
