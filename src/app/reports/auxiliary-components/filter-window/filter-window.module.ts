@@ -8,6 +8,7 @@ import { StatusFilterComponentComponent } from './auxiliary-components/status-fi
 import { TeamsFilterComponentComponent } from './auxiliary-components/teams-filter-component/teams-filter-component.component';
 import { SearchInputModule } from 'src/app/UI/search-input/search-input.module';
 import { SearchResultWindowModule } from 'src/app/UI/search-result-window/search-result-window.module';
+import { NoDataComponentModule } from 'src/app/no-data-component/no-data-component.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchResultWindowModule } from 'src/app/UI/search-result-window/search
   imports: [
     SearchInputModule,
     SearchResultWindowModule,
+    NoDataComponentModule,
     CommonModule
   ],
   exports :[
