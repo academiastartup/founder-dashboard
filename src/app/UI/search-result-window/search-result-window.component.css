@@ -19,11 +19,11 @@
 
 
 .section-main-title {
-    font-weight: 400;
-    color : #8f8f8f;
-    font-size : 1.4rem;
-    padding : 1.8rem;
-    text-align: left;
+    font-weight: 400 !important;
+    color : #8f8f8f !important;
+    font-size : 1.4rem !important;
+    padding : 1.8rem !important;
+    text-align: left !important;
 }
 
 .search-result {

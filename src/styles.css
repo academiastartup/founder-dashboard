@@ -31,3 +31,19 @@ html {
     z-index: 100;
     background-color: rgba(71, 73, 75, 0.726);
 }
+
+.transaparent-text {
+    color : transparent;
+}
+
+.no-border {
+    border : none;
+}
+
+.padding-bottom-16 {
+    padding-bottom: 1.6rem;
+}
+
+.paragraph {
+    font-size: 1.6rem;
+}

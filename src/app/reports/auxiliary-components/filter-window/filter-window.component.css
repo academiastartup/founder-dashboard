@@ -12,6 +12,8 @@
     border-radius: 10px;
     border : solid 1px  #e9ecef;
 
+    z-index: 2000;
+
     /*layout rules*/
     display : grid;
     grid-template-columns: 4fr 7fr;

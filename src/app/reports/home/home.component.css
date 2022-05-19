@@ -2,14 +2,6 @@
     margin-top : 3.0rem;
 }
 
-.section-main-title {
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color :  #495057;
-    font-size : 1.8rem;
-}
-
 .header-section {
     display : flex;
     align-items: center;
@@ -58,11 +50,15 @@
     justify-content: space-between;
 }
 
+.filter svg {
+    stroke : #1c7ed6;
+}
+
 .filter-and-export-btn {
     display : inline-block;
     cursor: pointer;
     background-color: #f8f9fa;
-    border-radius: 10px;
+    border-radius: 5px;
     border : none;
     padding : 0.8rem;
     transition: all 0.3s;
@@ -88,8 +84,24 @@
     transition: all 0.6s;
 }
 
+.filter {
+    background-color: #e9ecef;
+}
+
 .filter-text {
     font-size : 1.4rem;
     padding-left : 1.2rem;
+}
+
+.vertical-bar {
     border-left : solid 1px #e9ecef;
+    padding : 0.8rem 0;
+}
+
+.section-main-title {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color :  #495057;
+    font-size : 1.8rem;
 }
