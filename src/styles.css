@@ -29,6 +29,5 @@ html {
     width : 100vw;
     height: 100vh;
     z-index: 100;
-    background-color: rgba(233, 236, 239, 0.726);
-    backdrop-filter: blur(4px);
+    background-color: rgba(71, 73, 75, 0.726);
 }
