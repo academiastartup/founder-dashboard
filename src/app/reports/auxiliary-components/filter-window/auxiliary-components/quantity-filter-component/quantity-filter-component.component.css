@@ -27,6 +27,11 @@
     gap : 0.8rem;
 }
 
+.label-and-reset-btn {
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 label {
     font-size: 1.4rem;

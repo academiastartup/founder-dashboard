@@ -13,6 +13,8 @@ import { LoaderModule } from './UI/loader/loader.module';
 import { SearchInputModule } from './UI/search-input/search-input.module';
 import { SearchResultWindowModule } from './UI/search-result-window/search-result-window.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoaderModule,
     SearchResultWindowModule,
     SearchInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     RouterModule
   ],

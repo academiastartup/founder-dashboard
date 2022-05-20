@@ -4,17 +4,20 @@
         
         <!-- ///// RADIO BUTTONS AND LABEL ///// -->
         <div class="radio-input-and-label">
-            <input type="radio" name="" id="">
+            <input type="radio" name="" id="" 
+            (input)="setTransactionDirection('Em todas as direções')">
             <label for="">Em todas as direções</label>
         </div>
 
         <div class="radio-input-and-label">
-            <input type="radio" name="" id="">
+            <input type="radio" name="" id="" 
+            (input)="setTransactionDirection('Entradas')">
             <label for="">Entradas (Depósitos, vendas e investimentos)</label>
         </div>
 
         <div class="radio-input-and-label">
-            <input type="radio" name="" id="">
+            <input type="radio" name="" id="" 
+            (input)="setTransactionDirection('Saídas')">
             <label for="">Saídas (Pagamentos, develoções e compras)</label>
         </div>
         
@@ -22,18 +25,34 @@
 
     <div class="quantity-input">
         <div class="label-and-input">
-            <label for="" class="label-element">Quantia Especifica</label>
-            <input type="text" name="" id="">
+            <div class="label-and-reset-btn">
+                <label for="" class="label-element">Quantia Especifica</label>
+                <button class="reset-btn" (click)="setInputFiltersToDefault(equalQty,atLeastQty,noMoreThanQty)" *ngIf="qtyFilterInputs[0].value != ''">Apagar</button>
+            </div>
+            
+            <input type="number" #equalQty [disabled]="qtyFilterInputs[0].isDisabled" name="" id="" 
+                placeholder="= 0,00 AOA"
+                (input)="setRangeOperatorAndValue('=', equalQty, 0)">
         </div>
 
         <div class="label-and-input">
-            <label for="" class="label-element">Pelo menos de...</label>
-            <input type="text" name="" id="">
+            <div class="label-and-reset-btn">
+                <label for="" class="label-element">Pelo menos de...</label>
+                <button class="reset-btn" (click)="setInputFilterToDefault(atLeastQty, 1)" *ngIf="qtyFilterInputs[1].value != ''">Apagar</button>
+            </div>
+            <input type="number" #atLeastQty [disabled]="qtyFilterInputs[1].isDisabled" name="" id=""
+                placeholder=">= 0,00 AOA"
+                (input)="setRangeOperatorAndValue('>=', atLeastQty, 1)">
         </div>
 
         <div class="label-and-input">
-            <label for="" class="label-element">Não mais que...</label>
-            <input type="text" name="" id="">
+            <div class="label-and-reset-btn">
+                <label for="" class="label-element">Não mais que...</label>
+                <button class="reset-btn" (click)="setInputFilterToDefault(noMoreThanQty, 2)" *ngIf="qtyFilterInputs[2].value != ''">Apagar</button>
+            </div>
+            <input type="number" #noMoreThanQty [disabled]="qtyFilterInputs[2].isDisabled" name="" id=""
+                placeholder="<= 0,00 AOA"
+                (input)="setRangeOperatorAndValue('<=', noMoreThanQty, 2)">
         </div>
     </div>
 
