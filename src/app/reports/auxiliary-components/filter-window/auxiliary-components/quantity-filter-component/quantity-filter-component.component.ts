@@ -11,10 +11,39 @@ export class QuantityFilterComponentComponent implements OnInit {
 
   public transactionDirection! : string;
   public rangeOperatorAndValue! : string;
-  public qtyFilterInputs : Array<{name : string, value : string, isActive : boolean, isDisabled : boolean}> = [
-    {name : 'Quantia Especifica', value : '', isActive : false, isDisabled : false},
-    {name : 'Pelo menos de...', value : '', isActive : false, isDisabled : false},
-    {name : 'Não mais que...', value : '', isActive : false, isDisabled : false}
+  
+  public qtyFilterInputs : Array<{
+      name : string, 
+      value : string, 
+      isActive : boolean, 
+      isDisabled : boolean, 
+      error : boolean,
+      errorMsg : string
+    }> = [
+      {
+        name : 'Quantia Especifica', 
+        value : '', 
+        isActive : false, 
+        isDisabled : false,
+        error : false,
+        errorMsg : ''
+      },
+      {
+        name : 'Pelo menos de...', 
+        value : '', 
+        isActive : false, 
+        isDisabled : false,
+        error : false,
+        errorMsg : ''
+      },
+      {
+        name : 'Não mais que...', 
+        value : '', 
+        isActive : false, 
+        isDisabled : false,
+        error : false,
+        errorMsg : ''
+      }
   ];
   
   constructor(
@@ -33,6 +62,10 @@ export class QuantityFilterComponentComponent implements OnInit {
 
     if (qtyInputEle.value == '' && index == 0) this.setInputFiltersToDefault();
     if (qtyInputEle.value == '' && index > 0) this.setInputFilterToDefault(qtyInputEle, index);
+
+    // ensures that intervals are well formed
+    debugger
+    this.checkCorrectInterval();
   }
 
   setTransactionDirection(direction : string) {
@@ -65,15 +98,11 @@ export class QuantityFilterComponentComponent implements OnInit {
   }
 
   setInputFilterToDefault(inputEle : HTMLInputElement, inputEleIndx : number) {
-    debugger
     inputEle.value = '';
-    //this.qtyFilterInputs[inputEleIndx].isDisabled = false;
     this.qtyFilterInputs[inputEleIndx].value = '';
-
-    /*
-    * if every other input element is empty then run this.setInputFiltersToDefault
-    */
     if (this.areAllInputEleEmpty()) this.setInputFiltersToDefault();
+
+    this.removeErrorsFromInputElemnts();
   }
 
   setFilter() {
@@ -88,12 +117,39 @@ export class QuantityFilterComponentComponent implements OnInit {
   /*
   * HELPERS *************************
   */
+
   areAllInputEleEmpty() : boolean {
     let countTrue = 0;
     this.qtyFilterInputs.forEach((input) => {
       if (input.value == '') countTrue++;
     });
     return countTrue == 3;
+  }
+
+  removeErrorsFromInputElemnts() {
+    this.qtyFilterInputs[1].error = false;
+    this.qtyFilterInputs[1].errorMsg = '';
+
+    this.qtyFilterInputs[2].error = false;
+    this.qtyFilterInputs[2].errorMsg = '';
+  }
+
+  checkCorrectInterval() {
+    if (this.qtyFilterInputs[1].value != '' && this.qtyFilterInputs[2].value != '') {
+      if (this.qtyFilterInputs[1].value > this.qtyFilterInputs[2].value) {
+        this.qtyFilterInputs[1].error = true; 
+        this.qtyFilterInputs[2].error = true;
+  
+        this.qtyFilterInputs[1].errorMsg = 'Deve ser menor que o valor de \'Não mais que...\''; 
+        this.qtyFilterInputs[2].errorMsg = 'Deve ser maior que o valor de \'Pelo menos de....\'';
+      } else {
+        this.qtyFilterInputs[1].error = false; 
+        this.qtyFilterInputs[2].error = false;
+  
+        this.qtyFilterInputs[1].errorMsg = ''; 
+        this.qtyFilterInputs[2].errorMsg = '';
+      }
+    }
   }
 
 

@@ -42,7 +42,7 @@
             </div>
             <input type="number" #atLeastQty [disabled]="qtyFilterInputs[1].isDisabled" name="" id=""
                 placeholder=">= 0,00 AOA"
-                (input)="setRangeOperatorAndValue('>=', atLeastQty, 1)">
+                (input)="setRangeOperatorAndValue('>=', atLeastQty, 1)" [class.error]="qtyFilterInputs[1].error">
         </div>
 
         <div class="label-and-input">
@@ -52,7 +52,7 @@
             </div>
             <input type="number" #noMoreThanQty [disabled]="qtyFilterInputs[2].isDisabled" name="" id=""
                 placeholder="<= 0,00 AOA"
-                (input)="setRangeOperatorAndValue('<=', noMoreThanQty, 2)">
+                (input)="setRangeOperatorAndValue('<=', noMoreThanQty, 2)" [class.error]="qtyFilterInputs[2].error">
         </div>
     </div>
 
