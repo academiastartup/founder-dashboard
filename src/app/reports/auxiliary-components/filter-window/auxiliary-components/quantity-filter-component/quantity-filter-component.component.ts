@@ -63,8 +63,6 @@ export class QuantityFilterComponentComponent implements OnInit {
     if (qtyInputEle.value == '' && index == 0) this.setInputFiltersToDefault();
     if (qtyInputEle.value == '' && index > 0) this.setInputFilterToDefault(qtyInputEle, index);
 
-    // ensures that intervals are well formed
-    debugger
     this.checkCorrectInterval();
   }
 
@@ -136,7 +134,7 @@ export class QuantityFilterComponentComponent implements OnInit {
 
   checkCorrectInterval() {
     if (this.qtyFilterInputs[1].value != '' && this.qtyFilterInputs[2].value != '') {
-      if (this.qtyFilterInputs[1].value > this.qtyFilterInputs[2].value) {
+      if (+this.qtyFilterInputs[1].value > +this.qtyFilterInputs[2].value) {
         this.qtyFilterInputs[1].error = true; 
         this.qtyFilterInputs[2].error = true;
   
