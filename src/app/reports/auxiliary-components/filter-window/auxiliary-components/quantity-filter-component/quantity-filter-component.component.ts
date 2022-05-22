@@ -9,6 +9,11 @@ interface filterType {
   result : string 
 }
 
+interface filterResult {
+  name : string,
+  type : string
+}
+
 @Component({
   selector: 'app-quantity-filter-component',
   templateUrl: './quantity-filter-component.component.html',
@@ -127,6 +132,13 @@ export class QuantityFilterComponentComponent implements OnInit {
 
     this.setFilterResultToRange();
     this.setFilterResultToSpecificAmount();
+
+    if (this.filter.result != 'error')
+      this.setFilter({name : this.filter.result, type : 'quantity'})
+  }
+
+  setFilter(filter : filterResult) {
+    this.serviceFilterMessengerService.filterDataToSend.next(filter);
   }
 
 }
