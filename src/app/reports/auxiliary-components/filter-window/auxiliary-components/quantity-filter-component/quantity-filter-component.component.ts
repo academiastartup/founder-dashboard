@@ -133,8 +133,10 @@ export class QuantityFilterComponentComponent implements OnInit {
     this.setFilterResultToRange();
     this.setFilterResultToSpecificAmount();
 
-    if (this.filter.result != 'error')
-      this.setFilter({name : this.filter.result, type : 'quantity'})
+    if (this.filter.result != 'error') {
+      if (this.filter.result != "")
+        this.setFilter({name : this.filter.result, type : 'quantity'})
+    }
   }
 
   setFilter(filter : filterResult) {
