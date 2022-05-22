@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceFilterMessengerService } from 'src/app/reports/service-messengers/service-filter-messenger.service';
 
+interface filterType {
+  direction : string, 
+  specificAmountInputVal : string,
+  noMoreThanInputElVal : string,
+  atLeastInputElVal : string,
+  result : string 
+}
 
 @Component({
   selector: 'app-quantity-filter-component',
@@ -9,13 +16,21 @@ import { ServiceFilterMessengerService } from 'src/app/reports/service-messenger
 })
 export class QuantityFilterComponentComponent implements OnInit {
   
-  public filter : {direction : string, value : string } = {direction : "", value : ""};
-  public isThereAnIntervalError : boolean = false;
+  public filter : filterType = {
+    direction : "", 
+    specificAmountInputVal : "",
+    noMoreThanInputElVal : "",
+    atLeastInputElVal : "",
+    result : ""
+  };
+
+  public intervalError : boolean = false;
+  
   public interValErrorMsgs : Array<{errorMsg : string}> = [
     {errorMsg : 'Deve ser menor que \'Não mais que...\''},
-    {errorMsg : 'Deve ser maior que \'Pelo menos até..\''}
-  ] 
- 
+    {errorMsg : 'Deve ser maior que \'Pelo menos até...\''}
+  ]
+  
   constructor(
     private serviceFilterMessengerService : ServiceFilterMessengerService
   ) { }
@@ -23,7 +38,6 @@ export class QuantityFilterComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // set filter direction
   moneyIn() {
     this.filter.direction = 'Entradas';
   }
@@ -36,47 +50,83 @@ export class QuantityFilterComponentComponent implements OnInit {
     this.filter.direction = '';
   }
 
-  // set filter value
-  specificAmount(value : string) {
-    this.filter.value = `,=AOA${value}`;
+  removeSpecificAmountInputVal() {
+    this.filter.specificAmountInputVal = "";
+  }
+  
+  removeNoMoreThanInputElVal() {
+    this.filter.noMoreThanInputElVal = "";
   }
 
-  atLeast(value : string) {
-    this.setValue(value, () => this.filter.value = `,>AOA${value}`)
+  removeAtLeastInputElVal() {
+    this.filter.atLeastInputElVal = ""
   }
 
-  noMoreThan(value : string) {
-    this.setValue(value, () => this.filter.value = `,<AOA${value}`);
+  isThereAnIntervalError() : boolean {
+      if (this.filter.atLeastInputElVal != "" && this.filter.noMoreThanInputElVal != "") 
+        return +this.filter.atLeastInputElVal > +this.filter.noMoreThanInputElVal;
+      return false;
+  }
+  
+  clearsFilterResult() {
+    this.filter.result = "";
   }
 
-  // removes filter value
-  removesValue() {
-    this.filter.value = '';
+  activatesIntervalError() {
+    this.intervalError = true;
   }
 
-  // helper method to block input element
-  doesValueContain(operator : string) : boolean {
-    return this.filter.value.indexOf(operator) != -1;
+  deActivatesIntervalError() {
+    this.intervalError = false;
   }
 
-  // the basic logic behind set value for the filter
-  setValue(value : string, cb : Function) {
-    if (this.filter.value == '') {
-      cb();
-    } else {
-      let firstValue = this.filter.value.slice(5), secondValue = value;
-      let operator = firstValue.split('')[1]; // helps us determine whether 1st value is < ou >.
+  setFilterResultToRange() {
+    this.intervalError = false;
+    
+    // interval error
+    if (this.isThereAnIntervalError()) {
+      this.intervalError = true;
+      this.filter.result = 'error';
+    } 
+    
+    // filter set for a maximum value
+    if (!this.filter.atLeastInputElVal && this.filter.noMoreThanInputElVal) {
+      this.filter.result += ` <Kz${this.filter.noMoreThanInputElVal}`;
+    }
 
-      if (operator == '>') {
-        if (+firstValue > +secondValue) this.isThereAnIntervalError = true;
-        else this.filter.value = `,AOA${firstValue}-AOA${secondValue}`; 
-      } else {
-        if (+firstValue < +secondValue) this.isThereAnIntervalError = true;
-        else this.filter.value = `,AOA${firstValue}-AOA${secondValue}`; 
-      }
+    // filter set for minimum value
+    if (this.filter.atLeastInputElVal && !this.filter.noMoreThanInputElVal) {
+      this.filter.result += ` >Kz${this.filter.atLeastInputElVal}`;
+    }
+
+    // filter set for a range [a-b] b is bigger
+    if ((this.filter.atLeastInputElVal != "" && this.filter.noMoreThanInputElVal != "") &&
+    (+this.filter.atLeastInputElVal < +this.filter.noMoreThanInputElVal)
+    ) {
+      this.filter.result += ` Kz${this.filter.atLeastInputElVal}-Kz${this.filter.noMoreThanInputElVal}`;
+    }
+    
+    // filter set to [b-b]
+    if ((this.filter.atLeastInputElVal != "" && this.filter.noMoreThanInputElVal != "") &&
+    (this.filter.atLeastInputElVal == this.filter.noMoreThanInputElVal)
+    ) {
+      this.filter.result += ` =Kz${this.filter.atLeastInputElVal}`;
+    }
+      
+  }
+
+  setFilterResultToSpecificAmount() {
+    if (this.filter.specificAmountInputVal) {
+      this.filter.result += ` =Kz${this.filter.specificAmountInputVal}`;
     }
   }
 
+  activateFilter() {
+    this.clearsFilterResult();
+    this.filter.result += this.filter.direction;
 
+    this.setFilterResultToRange();
+    this.setFilterResultToSpecificAmount();
+  }
 
 }

@@ -1,0 +1,16 @@
+.label {
+    font-size : 1.4rem;
+}
+
+.label-and-input {
+    display : flex;
+    flex-direction: column;
+}
+
+input[type="number"]:focus {
+    outline: none;
+}
+
+.error {
+    border : solid 1px red;
+}

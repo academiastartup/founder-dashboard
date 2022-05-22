@@ -9,6 +9,7 @@ import { TeamsFilterComponentComponent } from './auxiliary-components/teams-filt
 import { SearchInputModule } from 'src/app/UI/search-input/search-input.module';
 import { SearchResultWindowModule } from 'src/app/UI/search-result-window/search-result-window.module';
 import { NoDataComponentModule } from 'src/app/no-data-component/no-data-component.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NoDataComponentModule } from 'src/app/no-data-component/no-data-compone
   ],
   imports: [
     SearchInputModule,
+    FormsModule,
     SearchResultWindowModule,
     NoDataComponentModule,
     CommonModule

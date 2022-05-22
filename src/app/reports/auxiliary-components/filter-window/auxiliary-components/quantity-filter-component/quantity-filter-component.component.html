@@ -1,9 +1,66 @@
-<!--
-    // GUIDE ON HOW TO BLOCK INPUT ELEMENTS (USE THE doesValueContain METHOD TO CHECK)
-    (0) -> if the value prprty of filter is an empty string, all input elements must be unlocked
-    (1) -> if the value prprty of filter does not contain =, then block the first input(specific amount)
-    (2) -> if the value prprty of filter does contain =, then block both the second and third inputs
+<div class="set-direction-toggles">
+    
+    <div class="label-and-toggle">
+        <label for="" class="label">Entrada e Saída</label>
+        <input type="radio" (input)="moneyInAndOut()"  name="" id="">
+    </div>
 
-    // GUIDE ON HOW TO SHOW INTERVAL ERROS ON THE INPUT ELEMENTS (USE THE isThereAnIntervalError FIELD TO CHECK)
-    (0) -> if isThereAnIntervalError is true, then show error messages for both second and third input elemnts 
--->
+    <div class="label-and-toggle">
+        <label for="" class="label">Entrada</label>
+        <input type="radio" (input)="moneyIn()" name="" id="">
+    </div>
+
+    <div class="label-and-toggle">
+        <label for="" class="label">Saída</label>
+        <input type="radio" (input)="moneyOut()" name="" id="">
+    </div>
+
+</div>
+
+<div style="margin : 10px 0"></div>
+
+<div class="set-values-inputs">
+
+    <div class="label-and-input">
+        <div class="label-remove-value-btn">
+            <label for="" class="label">Montante Específico</label>
+            <button *ngIf="filter.specificAmountInputVal != ''" (click)="removeSpecificAmountInputVal()">Remover</button>
+        </div>
+        
+        <input #specificAmountInput 
+            [(ngModel)]="filter.specificAmountInputVal"
+            [disabled]="!!filter.atLeastInputElVal || !!filter.noMoreThanInputElVal"
+            type="text" name="" placeholder="= AOA 0.0" id="">
+    </div>
+
+    <div class="label-and-input">
+        <div class="label-remove-value-btn">
+            <label for="" class="label">Pelo menos até...</label>
+            <button *ngIf="filter.atLeastInputElVal != ''"
+                (click)="removeAtLeastInputElVal()">Remover</button>
+        </div>
+        
+        <input 
+            [(ngModel)]="filter.atLeastInputElVal"
+            [disabled]="!!filter.specificAmountInputVal"
+            type="text" name="" placeholder=">= AOA 0.0" id="" [class.error]="intervalError">
+    </div>
+
+    <div class="label-and-input">
+        <div class="label-remove-value-btn">
+            <label for="" class="label">Não mais que...</label>
+            <button *ngIf="filter.noMoreThanInputElVal != ''"
+                (click)="removeNoMoreThanInputElVal()">Remover</button>
+        </div>
+        
+        <input 
+            [(ngModel)]="filter.noMoreThanInputElVal"
+            [disabled]="!!filter.specificAmountInputVal"
+            type="text" name="" placeholder="<= AOA 0.0" id="" [class.error]="intervalError">
+    </div>
+
+    <div class="set-filter-btn">
+        <button (click)="activateFilter()">Activar Filtro</button>
+    </div>
+
+</div>
