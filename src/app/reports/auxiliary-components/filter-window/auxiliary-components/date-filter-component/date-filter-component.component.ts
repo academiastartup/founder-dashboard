@@ -8,26 +8,11 @@ import { ServiceFilterMessengerService } from 'src/app/reports/service-messenger
 })
 export class DateFilterComponentComponent implements OnInit {
 
-  public showDefaultFilterWindw : boolean = false;
-  public currentFilterTitle : string = 'Tudo';
-
   constructor(
     private serviceFilterMessengerService : ServiceFilterMessengerService
   ) { }
 
   ngOnInit(): void {
   }
-
-  showDefaultFilterOptionWindow() {
-    this.showDefaultFilterWindw = !this.showDefaultFilterWindw;
-  }
-
-  setFilter(filterTitle : string) {
-    this.serviceFilterMessengerService.filterDataToSend.next(
-      {
-        name : filterTitle,
-        type : 'date'
-      }
-    );
-  }
+  
 }
