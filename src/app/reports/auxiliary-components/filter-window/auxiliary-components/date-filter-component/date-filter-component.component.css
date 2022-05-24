@@ -1,0 +1,86 @@
+.select-box {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    z-index: 3000;
+    width: 100%;
+}
+
+p, li {
+    font-size: 1.4rem;
+}
+
+.icon {
+    width : 24px;
+    cursor : pointer;
+}
+
+.box-of-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+li {
+    list-style: none;
+    border-bottom: solid 1px transparent;
+    cursor:pointer;
+    padding : 10px 0;
+}
+
+li:hover {
+    border-bottom: solid 1px lightblue;
+}
+
+/*MONTHS*/
+.months {
+    display : grid;
+    gap : 0.4rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.month {
+    background-color: rgb(230, 228, 228);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding : 1.2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.month:hover {
+    background-color: lightblue;
+} 
+
+.from-and-to-sections {
+    display: grid;
+    gap : 1.2rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.active {
+    background-color: rgb(77, 111, 122);
+    color : #fff;
+}
+
+.year-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 8px 0;
+}
+
+.filter-result {
+    width : 100%;
+    text-align: center;
+    border : dotted 1px rgb(77, 111, 122);
+}
+
+.filter-result p {
+    padding : 1.2rem;
+}
+
+.selected {
+    background-color: lightblue;
+}
