@@ -51,7 +51,7 @@
 
             <div class="months">
                 <div class="month" *ngFor="let month of monthsObj" 
-                   [class.active]="month.active" (click)="activeMonth(month)"
+                   [class.active]="month.active" (click)="activateMonth(month)"
                    (mouseover)="selectMonths(month)" [class.selected]="month.selected"
                    >
                     {{month.name}}

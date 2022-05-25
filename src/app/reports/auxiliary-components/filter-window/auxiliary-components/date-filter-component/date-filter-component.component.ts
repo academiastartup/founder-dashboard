@@ -22,6 +22,8 @@ export class DateFilterComponentComponent implements OnInit {
   isSelectMenuOpen : boolean = false;
   activeMonthIndex! : number;
 
+  monthsRange : Array<month> = [];
+
   public customDateOptions : Array<dateCustomType> = [
     {name : 'Últimos 30 dias'},
     {name : 'Este mês'},
@@ -55,21 +57,29 @@ export class DateFilterComponentComponent implements OnInit {
     this.isSelectMenuOpen = !this.isSelectMenuOpen;
   }
 
-  activeMonth(month : month) {
-    this.dateService.deActivateAllMonths(this.monthsObj);
-    this.activeMonthIndex = month.index;
-    month.active = true;
-    
+  activateMonth(month : month) {
+    if (this.dateService.howManyActiveElemntsAreThere(this.monthsObj) == 2) {
+      this.dateService.deActivateAllMonths(this.monthsObj);
+      this.dateService.deSelectMonths(this.monthsObj);
+    } else {
+      let activeMonth = this.dateService.getActiveElementIndx(this.monthsObj);
+      if (month.index < activeMonth) {
+        this.dateService.deActivateAllMonths(this.monthsObj);
+      this.dateService.deSelectMonths(this.monthsObj);
+      }
+    }
+    this.dateService.activateMonth(month);
   }
-
   
   selectMonths(month : month) {
-    this.dateService.deSelectMonths(this.monthsObj);
-    if (month.index > 0) {
-      for (let i = this.activeMonthIndex; i < month.index; i++) {
-        if (i != this.activeMonthIndex)
-          this.monthsObj[i].selected = true;
+    if (this.dateService.howManyActiveElemntsAreThere(this.monthsObj) == 1) {
+      
+      this.dateService.deSelectMonths(this.monthsObj);
+      let activeMonth = this.dateService.getActiveElementIndx(this.monthsObj);
+      if ((activeMonth >= 0) && (month.index > activeMonth)) {
+        this.dateService.selectPreviousMonths(month, activeMonth, this.monthsObj);
       }
+
     }
   }
 

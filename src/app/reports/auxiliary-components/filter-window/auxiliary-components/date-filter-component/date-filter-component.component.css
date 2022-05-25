@@ -50,7 +50,7 @@ li:hover {
 }
 
 .month:hover {
-    background-color: lightblue;
+    background-color: rgb(174, 199, 207);
 } 
 
 .from-and-to-sections {
@@ -60,6 +60,11 @@ li:hover {
 }
 
 .active {
+    background-color: rgb(77, 111, 122);
+    color : #fff;
+}
+
+.active:hover {
     background-color: rgb(77, 111, 122);
     color : #fff;
 }

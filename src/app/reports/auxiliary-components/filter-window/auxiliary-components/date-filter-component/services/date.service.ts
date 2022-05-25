@@ -128,16 +128,37 @@ export class DateService {
     months.forEach(month => month.active = false);
   }
 
-  isThereAMonthActive(months : Array<month>) : boolean {
-    return months.filter(month => month.active == true).length > 0;
+  howManyActiveElemntsAreThere(months : Array<month>) : number {
+    return months.filter(month => month.active == true).length;
   }
 
   deSelectMonths(months : Array<month>) {
     months.forEach(month => month.selected = false);
   }
 
-  
+  countClicks(month : month) : number {
+    return month.numberOfClicks;
+  }
 
+  activateMonth(month : month) {
+    month.active = true;
+  }
+
+  getActiveElementIndx(months : Array<month>) : number {
+    for (let i = 0; i < months.length; i++) {
+      if (months[i].active == true) {
+        return months[i].index;
+      }
+    }
+    return NaN;
+  }
+
+  selectPreviousMonths(month : month, activeMonthIndx : number, months : Array<month>) {
+    let i = activeMonthIndx + 1
+    for (; i < month.index; i++) {
+      months[i].selected = true;
+    }
+  }
 
 
 }
