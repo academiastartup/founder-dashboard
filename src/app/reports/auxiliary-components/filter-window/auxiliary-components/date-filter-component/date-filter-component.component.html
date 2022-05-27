@@ -5,7 +5,6 @@
         <div class="label-and-input">
             <p>Mostrar transações para:</p>
             <div style="padding : 0.9rem 1.8rem; border : solid 1px lightgray;">
-                
                 <div class="box-of-value">
                     <p>{{activeOption}}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" *ngIf="isSelectMenuOpen" (click)="toggleSelectMenuBox()" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -50,9 +49,9 @@
             </div>
 
             <div class="months">
-                <div class="month" *ngFor="let month of monthsObj" 
-                   [class.active]="month.active" (click)="activateMonth(month)"
-                   (mouseover)="selectMonths(month)" [class.selected]="month.selected"
+                <div class="month" *ngFor="let month of monthsOf2021" 
+                   [class.active]="month.active" (click)="activateMonth(month, monthsOf2021)"
+                   (mouseover)="selectMonths(month, monthsOf2021)" [class.selected]="month.selected"
                    >
                     {{month.name}}
                 </div>
@@ -68,9 +67,9 @@
                 </svg>
             </div>
             <div class="months">
-                <div class="month" *ngFor="let month of monthsObj" 
-                   [class.active]="month.active" (click)="activateMonth(month)"
-                   (mouseover)="selectMonths(month)" [class.selected]="month.selected"
+                <div class="month" *ngFor="let month of monthsOf2022" 
+                   [class.active]="month.active" (click)="activateMonth(month, monthsOf2022)"
+                   (mouseover)="selectMonths(month, monthsOf2022)" [class.selected]="month.selected"
                    >
                     {{month.name}}
                 </div>

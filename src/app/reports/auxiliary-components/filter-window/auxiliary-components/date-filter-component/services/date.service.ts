@@ -17,7 +17,106 @@ export class DateService {
   
   public date;
 
-  public months : Array<month> = [
+  public monthsOf2021 : Array<month> = [
+    {
+      name : 'Jan', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 0,
+      active : false
+    },
+    {
+      name : 'Fev', numberOfDays : '28',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 1,
+      active : false
+    },
+    {
+      name : 'Mar', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 2,
+      active : false
+    },
+    {
+      name : 'Abr', numberOfDays : '30',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 3,
+      active : false
+    },
+    {
+      name : 'Mai', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 4,
+      active : false
+    },
+    {
+      name : 'Jun', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 5,
+      active : false
+    },
+    {
+      name : 'Jul', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 6,
+      active : false
+    },
+    {
+      name : 'Ago', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 7,
+      active : false
+    },
+    {
+      name : 'Set', numberOfDays : '30',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 8,
+      active : false
+    },
+    {
+      name : 'Out', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 9,
+      active : false
+    },
+    {
+      name : 'Nov', numberOfDays : '30',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 10,
+      active : false
+    },
+    {
+      name : 'Dez', numberOfDays : '31',
+      year : 2021,
+      numberOfClicks : 0,
+      selected : false,
+      index : 11,
+      active : false
+    },
+  ];
+
+  public monthsOf2022 : Array<month> = [
     {
       name : 'Jan', numberOfDays : '31',
       year : 2022,
@@ -120,8 +219,12 @@ export class DateService {
     this.date = new Date();
   }
 
-  getMonths() : Array<month>{
-    return this.months;
+  getMonthsOf2021() : Array<month>{
+    return this.monthsOf2021;
+  }
+
+  getMonthsOf2022() : Array<month> {
+    return this.monthsOf2022;
   }
 
   deActivateAllMonths(months : Array<month>) {
