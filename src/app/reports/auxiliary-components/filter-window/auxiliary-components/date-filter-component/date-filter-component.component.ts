@@ -18,7 +18,7 @@ interface filterResult {
 })
 export class DateFilterComponentComponent implements OnInit {
 
-  activeOption : string = 'Todas as transações';
+  activeOption : string = 'Sem filtros customizados';
   isSelectMenuOpen : boolean = false;
   activeMonthIndex! : number;
 
@@ -43,14 +43,13 @@ export class DateFilterComponentComponent implements OnInit {
   ) { }
 
   setCustomOption(optionName : string) {
-    this.activeOption = optionName;
     this.setFilter({name : optionName, type : 'Date'});
   }
 
   ngOnInit(): void {  
     this.monthsOf2021 = this.dateService.getMonthsOf2021();
     this.monthsOf2022 = this.dateService.getMonthsOf2022();
-    this.years = this.dateService.getMonthsOf2021().concat(this.dateService.getMonthsOf2022());
+    this.years = this.monthsOf2021.concat(this.monthsOf2022);
   }
 
   setFilter(filter : filterResult) {
@@ -63,19 +62,17 @@ export class DateFilterComponentComponent implements OnInit {
 
   activateMonth(month : month) {
     
-    debugger
     if (this.dateService.howManyActiveElemntsAreThere(this.years) == 2) {
       this.resetSelections();
     } else {
       let activeMonth = this.dateService.getActiveElementIndx(this.years);
-      if (month.index < activeMonth) {
+      if (this.years.indexOf(month) < activeMonth) {
         this.resetSelections();
       }
     }
 
     this.dateService.activateMonth(month);
     this.monthsRange.push(month);
-    console.log(this.monthsRange);
   }
   
   selectMonths(month : month) {
@@ -83,7 +80,7 @@ export class DateFilterComponentComponent implements OnInit {
       
       this.dateService.deSelectMonths(this.years);
       let activeMonth = this.dateService.getActiveElementIndx(this.years);
-      if ((activeMonth >= 0) && (month.index > activeMonth)) {
+      if ((activeMonth >= 0) && (this.years.indexOf(month) > activeMonth)) {
         this.dateService.selectPreviousMonths(month, activeMonth, this.years);
       }
 
@@ -94,6 +91,28 @@ export class DateFilterComponentComponent implements OnInit {
     this.dateService.deActivateAllMonths(this.years);
     this.dateService.deSelectMonths(this.years);
     this.monthsRange  = [];
+  }
+
+  constructCustomFiter(rangeOfMonths : Array<month>) : filterResult {
+
+    let fromDate = '';
+    let toDate = '';
+    let filter = '';
+
+    if (rangeOfMonths.length > 1) {
+      fromDate = `${rangeOfMonths[0].name} 1, ${rangeOfMonths[0].year}`;
+      toDate = `${rangeOfMonths[1].name} ${rangeOfMonths[1].numberOfDays}, ${rangeOfMonths[1].year}`;
+      filter = `${fromDate} - ${toDate}`;
+    } else if (rangeOfMonths.length == 1) {
+      filter = `${rangeOfMonths[0].name} 1 - ${rangeOfMonths[0].name}  ${rangeOfMonths[0].numberOfDays}, ${rangeOfMonths[0].year}`;
+    }
+    
+    return {name : filter, type : 'Date'}
+  }
+
+  setCustomFilter() {
+    this.activeOption = this.constructCustomFiter(this.monthsRange).name;
+    this.setFilter(this.constructCustomFiter(this.monthsRange))
   }
 
 }

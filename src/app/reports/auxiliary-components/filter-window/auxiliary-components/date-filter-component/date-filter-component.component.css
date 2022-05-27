@@ -59,12 +59,6 @@ li:hover {
     grid-template-columns: 1fr 1fr;
 }
 
-.active {
-    background-color: rgb(77, 111, 122);
-    color : #fff;
-}
-
-
 .year-section {
     display: flex;
     justify-content: space-between;
@@ -72,16 +66,33 @@ li:hover {
     padding : 8px 0;
 }
 
-.filter-result {
+.filter-result input {
     width : 100%;
     text-align: center;
-    border : dotted 1px rgb(77, 111, 122);
+    border : none;
 }
 
-.filter-result p {
+.filter-result input:focus {
+    outline: none;
+}
+
+.filter-result {
+    border : dotted 1px rgb(77, 111, 122);
     padding : 1.2rem;
 }
 
+
+
 .selected {
     background-color: lightblue;
+}
+
+.active {
+    background-color: rgb(77, 111, 122);
+    color : #fff;
+}
+
+.active:hover {
+    background-color: rgb(77, 111, 122);
+    color : #fff;
 }
