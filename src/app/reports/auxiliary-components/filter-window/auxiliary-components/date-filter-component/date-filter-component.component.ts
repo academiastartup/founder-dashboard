@@ -58,20 +58,27 @@ export class DateFilterComponentComponent implements OnInit {
   }
 
   activateMonth(month : month) {
+    
     if (this.dateService.howManyActiveElemntsAreThere(this.monthsObj) == 2) {
       this.dateService.deActivateAllMonths(this.monthsObj);
       this.dateService.deSelectMonths(this.monthsObj);
+      this.monthsRange  = [];
     } else {
       let activeMonth = this.dateService.getActiveElementIndx(this.monthsObj);
       if (month.index < activeMonth) {
         this.dateService.deActivateAllMonths(this.monthsObj);
-      this.dateService.deSelectMonths(this.monthsObj);
+        this.dateService.deSelectMonths(this.monthsObj);
+        this.monthsRange = [];
       }
     }
+
     this.dateService.activateMonth(month);
+    this.monthsRange.push(month);
+    console.log(this.monthsRange);
   }
   
   selectMonths(month : month) {
+    debugger
     if (this.dateService.howManyActiveElemntsAreThere(this.monthsObj) == 1) {
       
       this.dateService.deSelectMonths(this.monthsObj);

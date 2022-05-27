@@ -136,10 +136,6 @@ export class DateService {
     months.forEach(month => month.selected = false);
   }
 
-  countClicks(month : month) : number {
-    return month.numberOfClicks;
-  }
-
   activateMonth(month : month) {
     month.active = true;
   }
@@ -159,6 +155,5 @@ export class DateService {
       months[i].selected = true;
     }
   }
-
 
 }
