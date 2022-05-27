@@ -122,7 +122,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 0,
+      index : 12,
       active : false
     },
     {
@@ -130,7 +130,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 1,
+      index : 13,
       active : false
     },
     {
@@ -146,7 +146,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 3,
+      index : 14,
       active : false
     },
     {
@@ -154,7 +154,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 4,
+      index : 15,
       active : false
     },
     {
@@ -162,7 +162,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 5,
+      index : 16,
       active : false
     },
     {
@@ -170,7 +170,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 6,
+      index : 17,
       active : false
     },
     {
@@ -178,7 +178,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 7,
+      index : 18,
       active : false
     },
     {
@@ -186,7 +186,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 8,
+      index : 19,
       active : false
     },
     {
@@ -194,7 +194,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 9,
+      index : 20,
       active : false
     },
     {
@@ -202,7 +202,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 10,
+      index : 21,
       active : false
     },
     {
@@ -210,7 +210,7 @@ export class DateService {
       year : 2022,
       numberOfClicks : 0,
       selected : false,
-      index : 11,
+      index : 22,
       active : false
     },
   ];
@@ -254,7 +254,7 @@ export class DateService {
 
   selectPreviousMonths(month : month, activeMonthIndx : number, months : Array<month>) {
     let i = activeMonthIndx + 1
-    for (; i < month.index; i++) {
+    for (; i <= month.index; i++) {
       months[i].selected = true;
     }
   }

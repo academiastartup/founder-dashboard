@@ -35,6 +35,7 @@ export class DateFilterComponentComponent implements OnInit {
 
   public monthsOf2021 : Array<month> = [];
   public monthsOf2022 : Array<month> = [];
+  public years : Array<month> = [];
 
   constructor(
     private serviceFilterMessengerService : ServiceFilterMessengerService,
@@ -49,6 +50,7 @@ export class DateFilterComponentComponent implements OnInit {
   ngOnInit(): void {  
     this.monthsOf2021 = this.dateService.getMonthsOf2021();
     this.monthsOf2022 = this.dateService.getMonthsOf2022();
+    this.years = this.dateService.getMonthsOf2021().concat(this.dateService.getMonthsOf2022());
   }
 
   setFilter(filter : filterResult) {
@@ -59,14 +61,15 @@ export class DateFilterComponentComponent implements OnInit {
     this.isSelectMenuOpen = !this.isSelectMenuOpen;
   }
 
-  activateMonth(month : month, year : Array<month>) {
+  activateMonth(month : month) {
     
-    if (this.dateService.howManyActiveElemntsAreThere(year) == 2) {
-      this.resetSelections(year);
+    debugger
+    if (this.dateService.howManyActiveElemntsAreThere(this.years) == 2) {
+      this.resetSelections();
     } else {
-      let activeMonth = this.dateService.getActiveElementIndx(year);
+      let activeMonth = this.dateService.getActiveElementIndx(this.years);
       if (month.index < activeMonth) {
-        this.resetSelections(year);
+        this.resetSelections();
       }
     }
 
@@ -75,22 +78,21 @@ export class DateFilterComponentComponent implements OnInit {
     console.log(this.monthsRange);
   }
   
-  selectMonths(month : month, year : Array<month>) {
-    debugger
-    if (this.dateService.howManyActiveElemntsAreThere(year) == 1) {
+  selectMonths(month : month) {
+    if (this.dateService.howManyActiveElemntsAreThere(this.years) == 1) {
       
-      this.dateService.deSelectMonths(year);
-      let activeMonth = this.dateService.getActiveElementIndx(year);
+      this.dateService.deSelectMonths(this.years);
+      let activeMonth = this.dateService.getActiveElementIndx(this.years);
       if ((activeMonth >= 0) && (month.index > activeMonth)) {
-        this.dateService.selectPreviousMonths(month, activeMonth, year);
+        this.dateService.selectPreviousMonths(month, activeMonth, this.years);
       }
 
     }
   }
 
-  resetSelections(year : Array<month>) {
-    this.dateService.deActivateAllMonths(year);
-    this.dateService.deSelectMonths(year);
+  resetSelections() {
+    this.dateService.deActivateAllMonths(this.years);
+    this.dateService.deSelectMonths(this.years);
     this.monthsRange  = [];
   }
 

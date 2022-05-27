@@ -50,8 +50,8 @@
 
             <div class="months">
                 <div class="month" *ngFor="let month of monthsOf2021" 
-                   [class.active]="month.active" (click)="activateMonth(month, monthsOf2021)"
-                   (mouseover)="selectMonths(month, monthsOf2021)" [class.selected]="month.selected"
+                   [class.active]="month.active" (click)="activateMonth(month)"
+                   (mouseover)="selectMonths(month)" [class.selected]="month.selected"
                    >
                     {{month.name}}
                 </div>
@@ -68,8 +68,8 @@
             </div>
             <div class="months">
                 <div class="month" *ngFor="let month of monthsOf2022" 
-                   [class.active]="month.active" (click)="activateMonth(month, monthsOf2022)"
-                   (mouseover)="selectMonths(month, monthsOf2022)" [class.selected]="month.selected"
+                   [class.active]="month.active" (click)="activateMonth(month)"
+                   (mouseover)="selectMonths(month)" [class.selected]="month.selected"
                    >
                     {{month.name}}
                 </div>
