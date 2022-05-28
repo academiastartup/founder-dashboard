@@ -10,7 +10,14 @@
 
 .table-header {
     padding : 1.2rem 0;
+    position: sticky; top: 0;
+    background-color: #fff;
     border-bottom: solid 1px #e9ecef;
+    border-top: solid 1px #e9ecef;
+}
+
+.row-header {
+    align-items: center;
 }
 
 .data-label {
@@ -32,8 +39,6 @@
 .table-body .cell {
     padding: 1.6rem 0;
 }
-
-
 
 .border-bottom {
     border-bottom: solid 1px #e9ecef;
@@ -59,17 +64,16 @@
 .filter-and-export-btn {
     display : inline-block;
     cursor: pointer;
-    background-color: #f8f9fa;
     border-radius: 10px;
     border : none;
     width: 100%;
-    padding : 0.8rem;
+    
     transition: all 0.3s;
 }
 
 .filter-and-export-btn {
     display : flex;
-    justify-content: center;
+    background-color: transparent;
     align-items : center;
     gap : 0.8rem;
 }
