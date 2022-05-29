@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnDestroy} from '@angular/core';
+import { ServiceFilterMessengerService } from '../../service-messengers/service-filter-messenger.service';
 import { transactionType } from '../../services-for-data/service-for-data.service';
 
 const MONTHS : Array<string> = [
@@ -21,14 +22,35 @@ const MONTHS : Array<string> = [
   templateUrl: './table-of-reports.component.html',
   styleUrls: ['./table-of-reports.component.css']
 })
-export class TableOfReportsComponent implements OnInit {
+export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   @Output() exportReportEvent = new EventEmitter<any>();
   @Input() transactionsData : Array<transactionType> = [];
+
+  // vector to store subscriptions
+  subscriber$ : any;
  
-  constructor() { }
+  constructor(
+    private serviceFilterMessengerService : ServiceFilterMessengerService
+  ) { }
 
   ngOnInit(): void {
+    this.subscriber$ = this.serviceFilterMessengerService.getFilterAndTransactionToSendAsObservable().
+      subscribe((value : any) => {
+        
+        let transactions = value.transactionsData;
+
+        if (value.filterArr.length > 0) {
+          value.filterArr.forEach((filter : {name : string, type : string}) => {
+            if (filter.type == 'status') {
+              this.transactionsData = value.transactionsData.filter((transaction : any) => transaction.status == filter.name)
+            }
+          })
+        } else {
+          this.transactionsData = value.transactionsData;
+        }
+        
+      });
   }
 
   emitExportReportEvent() {
@@ -44,5 +66,7 @@ export class TableOfReportsComponent implements OnInit {
     let arrayOfDateParts = date.split("/");
     return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1]]}`
   }
+
+  ngOnDestroy(): void {}
 
 }

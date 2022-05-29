@@ -1,4 +1,4 @@
-<div class="table">
+<div class="table" [class.full-height]="transactionsData.length == 0">
     <div class="table-header">
         <div class="row row-header">
             <div class="cell">
@@ -48,12 +48,12 @@
 
                 <!-- //// money in icon //// -->
                 <svg xmlns="http://www.w3.org/2000/svg" *ngIf="transaction.direction == 'in'" class="icon cash-in" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
 
                 <!-- //// money out icon ////  -->
                 <svg xmlns="http://www.w3.org/2000/svg" *ngIf="transaction.direction == 'out'" class="icon cash-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
 
                 <p class="data-label" 
@@ -70,8 +70,8 @@
             </div>
         </div>
     </div>
-    <div class="no-match-cover" *ngIf="false"></div>
-    <div class="no-math-text" *ngIf="false">
+    <div class="no-match-cover" *ngIf="transactionsData.length == 0"></div>
+    <div class="no-math-text" *ngIf="transactionsData.length == 0">
         <h1 class="section-main-title padding-bottom-16">Sem dados para mostrar</h1>
         <p class="paragraph">Tente ajustar, ou eliminar filtros.</p>
     </div>

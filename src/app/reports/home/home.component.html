@@ -59,7 +59,9 @@
 
     </div>
 
-    <app-table-of-reports [transactionsData]="transactionsData" (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
+    <app-table-of-reports 
+        [transactionsData]="transactionsData" 
+        (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
 
     <div class="footer-section">
         <p class="pagination-indicator">Total</p>

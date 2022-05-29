@@ -7,10 +7,15 @@ import { Subject } from 'rxjs';
 export class ServiceFilterMessengerService {
 
   filterDataToSend = new Subject();
+  filterAndTransactionToSend = new Subject();
 
   constructor() { }
 
   getFilterDataToSendAsObservable() {
     return this.filterDataToSend.asObservable();
+  }
+
+  getFilterAndTransactionToSendAsObservable() {
+    return this.filterAndTransactionToSend.asObservable();
   }
 }

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   dataReadyToShow : boolean = false;
 
   // vector to store subscriptions
-  filterSubscriber : any = [];
+  subscriber$ : any;
 
   constructor(
     private serviceFilterMessengerService : ServiceFilterMessengerService,
@@ -30,13 +30,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     this.loadTransactions();
 
-    this.filterSubscriber = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
+    this.subscriber$ = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
       subscribe((value : any) => {
         let newFilter = value;
 
         // ensures mutual exclusivity for same type filter
         this.activeFilters = this.activeFilters.filter(filter => filter.type != newFilter.type);
         this.activeFilters.push(newFilter);
+
+        // comunicate with the reports table once a new filter is added
+        this.sendFilterAndTransactionData();
+
       });
   }
 
@@ -50,6 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   removeFilter(filterId : number) {
     this.activeFilters.splice(filterId, 1);
+    // comunicate with the reports table once a new filter is added
+    this.sendFilterAndTransactionData();
   }
 
   closeDownloadReportModalWindow() {
@@ -57,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.filterSubscriber.unsubscribe();
+    this.subscriber$.unsubscribe();
   }
 
   loadTransactions() {
@@ -65,6 +71,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.transactionsData = data;
       this.dataReadyToShow = true;
     });
+  }
+
+  sendFilterAndTransactionData() {
+    this.serviceFilterMessengerService.filterAndTransactionToSend.next(
+      {
+        filterArr : this.activeFilters,
+        transactionsData : this.transactionsData
+      }
+    )
   }
 
 }
