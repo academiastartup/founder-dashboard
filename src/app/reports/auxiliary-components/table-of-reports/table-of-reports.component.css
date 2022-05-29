@@ -61,6 +61,10 @@
     stroke : green;
 }
 
+.cash-out {
+    stroke : red;
+}
+
 .filter-and-export-btn {
     display : inline-block;
     cursor: pointer;
@@ -102,4 +106,39 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.user-initials {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 30px;
+    height : 30px;
+    color : #fff;
+    background-color: #1c7ed6;
+    border-radius: 50%;
+}
+
+.transaction-status-btn {
+    cursor: pointer;
+    padding : 0.4rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: solid 1px blue;
+    border-radius: 2px;
+}
+
+/*classes related to trasaction status*/
+button.pending {
+    border :solid 1px #fcc419;
+    color : #fcc419;
+}
+
+button.canceled {
+    border : solid 1px #fa5252;
+    color : #fa5252;
+}
+
+p.canceled {
+    text-decoration: line-through;
 }

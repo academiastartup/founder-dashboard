@@ -59,9 +59,12 @@
 
     </div>
 
-    <app-table-of-reports (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
+    <app-table-of-reports [transactionsData]="transactionsData" (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
 
     <div class="footer-section">
+        <p class="pagination-indicator">Total</p>
+        <p class="pagination-indicator">{{'787598347534' | currency:'Kz'}}</p>
+        
         <div class="pagination-section">
             <p class="pagination-indicator">1 de 100</p>
             <div class="forward-backward-icons">

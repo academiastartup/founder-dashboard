@@ -6,6 +6,7 @@ import { TableOfReportsComponent } from './auxiliary-components/table-of-reports
 import { ModalWindowComponent } from './auxiliary-components/modal-window/modal-window.component';
 import { LoaderModule } from '../UI/loader/loader.module';
 import { FilterWindowModule } from './auxiliary-components/filter-window/filter-window.module';
+import { ServiceForDataService } from './services-for-data/service-for-data.service';
 
 const routes : Routes = [
   {path : '', component : HomeComponent}
@@ -22,6 +23,9 @@ const routes : Routes = [
     LoaderModule,
     FilterWindowModule,
     RouterModule.forChild(routes)
+  ],
+  providers : [
+    ServiceForDataService
   ]
 })
 export class ReportsModule { }

@@ -5,7 +5,7 @@
                 <p class="data-label">Data</p>
             </div>
             <div class="cell">
-                <p class="data-label">De/Para</p>
+                <p class="data-label">Benefiário(s)</p>
             </div>
             <div class="cell flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -23,27 +23,42 @@
     </div>
 
     <div class="table-body">
-        <div class="row" *ngFor="let i of [1,2,3,4,5,6,7,8,432,4,545,54,54,54,5,45,45,4,53,5,35,34]">
+        <div class="row" *ngFor="let transaction of transactionsData">
             <div class="cell flex">
-                <p class="data-label">Maio 05</p>
+                <p class="data-label">{{getBetterDate(transaction.date)}}</p>
             </div>
             <div class="cell flex border-bottom">
-                <svg width="" class="icon" viewBox="0 0 212 284" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="32.8674" cy="32.8674" r="32.8674" fill="#2C322A"/>
-                    <circle cx="32.8674" cy="105.622" r="32.8674" fill="#2C322A"/>
-                    <circle cx="105.622" cy="105.622" r="32.8674" fill="#2C322A"/>
-                    <circle cx="32.8674" cy="178.378" r="32.8674" fill="#2C322A"/>
-                    <circle cx="32.8674" cy="251.133" r="32.8674" fill="#2C322A"/>
-                    <circle cx="105.622" cy="32.8674" r="32.8674" fill="#2C322A"/>
-                    <circle cx="178.378" cy="32.8674" r="32.8674" fill="#2C322A"/>
-                    </svg>                    
-                <p class="data-label">Academia Startup</p>
+
+                <div class="user-initials">
+                    <p>{{getInitials(transaction.beneficiary)}}</p>
+                </div>                    
+
+                <p class="data-label">{{transaction.beneficiary}}</p>
+
+                <div class="transaction-status" *ngIf="transaction.status != 'sucesso'">
+                    <button class="transaction-status-btn"
+                        [class.pending]="transaction.status == 'pendente'"
+                        [class.canceled]="transaction.status == 'cancelado' || transaction.status == 'falhou'"
+                        >
+                        {{transaction.status}}
+                    </button>
+                </div>
             </div>
             <div class="cell flex border-bottom">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon cash-in" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+                <!-- //// money in icon //// -->
+                <svg xmlns="http://www.w3.org/2000/svg" *ngIf="transaction.direction == 'in'" class="icon cash-in" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                <p class="data-label">AOA 1,200,000</p>
+
+                <!-- //// money out icon ////  -->
+                <svg xmlns="http://www.w3.org/2000/svg" *ngIf="transaction.direction == 'out'" class="icon cash-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+
+                <p class="data-label" 
+                    [class.canceled]="transaction.status == 'cancelado' || transaction.status == 'falhou'">
+                        {{transaction.value | currency:'Kz'}}</p>
             </div>
             <div class="cell flex border-bottom">
                 <button class="filter-and-export-btn" (click)="emitExportReportEvent()">

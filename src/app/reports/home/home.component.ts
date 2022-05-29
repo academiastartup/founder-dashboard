@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscriber } from 'rxjs';
 import { ServiceFilterMessengerService } from '../service-messengers/service-filter-messenger.service';
+import { ServiceForDataService, transactionType } from '../services-for-data/service-for-data.service';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,8 @@ import { ServiceFilterMessengerService } from '../service-messengers/service-fil
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  transactionsData : Array<transactionType> = [];
 
   openDownloadReportModalWindow : boolean = false;
   openFilterWindow : boolean = false;
@@ -19,13 +22,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   filterSubscriber : any = [];
 
   constructor(
-    private serviceFilterMessengerService : ServiceFilterMessengerService
+    private serviceFilterMessengerService : ServiceFilterMessengerService,
+    private serviceForDataService : ServiceForDataService
   ) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dataReadyToShow = true;
-    }, 2000);
+    
+    this.loadTransactions();
 
     this.filterSubscriber = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
       subscribe((value : any) => {
@@ -57,6 +60,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.filterSubscriber.unsubscribe();
   }
 
-  
+  loadTransactions() {
+    return this.serviceForDataService.getTransactions().subscribe((data : Array<transactionType>) => {
+      this.transactionsData = data;
+      this.dataReadyToShow = true;
+    });
+  }
 
 }
