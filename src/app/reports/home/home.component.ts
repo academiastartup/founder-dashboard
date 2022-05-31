@@ -11,6 +11,7 @@ import { ServiceForDataService, transactionType } from '../services-for-data/ser
 export class HomeComponent implements OnInit, OnDestroy {
 
   transactionsData : Array<transactionType> = [];
+  totalOfTransactionsInValue : number = 0;
 
   openDownloadReportModalWindow : boolean = false;
   openFilterWindow : boolean = false;
@@ -29,13 +30,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     
     this.loadTransactions();
-
+  
     this.subscriber$ = this.serviceFilterMessengerService.getFilterDataToSendAsObservable().
       subscribe((value : any) => {
         let newFilter = value;
 
         // ensures mutual exclusivity for same type filter
-        this.activeFilters = this.activeFilters.filter(filter => filter.type != newFilter.type);
+        if (newFilter.type == 'Date')
+          this.activeFilters = this.activeFilters.filter(filter => filter.type != 'Date');
+        
         this.activeFilters.push(newFilter);
 
         // comunicate with the reports table once a new filter is added
@@ -70,6 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.serviceForDataService.getTransactions().subscribe((data : Array<transactionType>) => {
       this.transactionsData = data;
       this.dataReadyToShow = true;
+      this.totalOfTransactionsInValue = this.getSumOfTransactionsInValue(data);
     });
   }
 
@@ -80,6 +84,19 @@ export class HomeComponent implements OnInit, OnDestroy {
         transactionsData : this.transactionsData
       }
     )
+  }
+
+  setTransactionsTotalInValueFromEvent($event : number) {
+    this.totalOfTransactionsInValue = $event;
+  }
+
+  /*helpers*/
+  getSumOfTransactionsInValue(transasctions : Array<transactionType>) : number {
+    let sum = 0;
+    transasctions.forEach((transasction : transactionType) => {
+      sum += +transasction.value;
+    })
+    return sum;
   }
 
 }

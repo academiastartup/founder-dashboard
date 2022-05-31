@@ -17,6 +17,8 @@ const MONTHS : Array<string> = [
   'Dezembro'
 ];
 
+interface filterType {name : string, type : string}
+
 @Component({
   selector: 'app-table-of-reports',
   templateUrl: './table-of-reports.component.html',
@@ -25,6 +27,7 @@ const MONTHS : Array<string> = [
 export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   @Output() exportReportEvent = new EventEmitter<any>();
+  @Output() sumOfTransactionsEvent = new EventEmitter<number>();
   @Input() transactionsData : Array<transactionType> = [];
 
   // vector to store subscriptions
@@ -37,19 +40,17 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriber$ = this.serviceFilterMessengerService.getFilterAndTransactionToSendAsObservable().
       subscribe((value : any) => {
-        
-        let transactions = value.transactionsData;
+      
+        ////// ---- STATUS FILTER ---- //////
+        this.statusFilterHandler(
+          value.filterArr.filter((filtr : filterType) => filtr.type == 'status'),
+          value.transactionsData
+        )
 
-        if (value.filterArr.length > 0) {
-          value.filterArr.forEach((filter : {name : string, type : string}) => {
-            if (filter.type == 'status') {
-              this.transactionsData = value.transactionsData.filter((transaction : any) => transaction.status == filter.name)
-            }
-          })
-        } else {
-          this.transactionsData = value.transactionsData;
-        }
-        
+
+         // computes sum of all transactions and send it back to table-reports component
+         this.computeSumOfTransactions();
+
       });
   }
 
@@ -67,6 +68,36 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1]]}`
   }
 
-  ngOnDestroy(): void {}
+  statusFilterHandler(statusFilters : Array<filterType>, transactData : Array<transactionType>) : void {
+    debugger
+    let temporaryResults: any[]  = [];
+    statusFilters.forEach((filter : filterType) => {
+      temporaryResults.push(
+        transactData.filter((filtr : transactionType) => filtr.status == filter.name)
+      )
+    })
+
+    /*
+    * THE FOLLOWING CODE SHOULD BE REPLACED BY A BETTER ALTERNATIVE
+    */
+    if (temporaryResults.length > 0) {
+      this.transactionsData = temporaryResults.flat(1);
+    } else {
+      this.transactionsData = transactData;
+    }
+      
+  }
+
+  computeSumOfTransactions() {
+    let totalOftransactions = 0;
+    this.transactionsData.forEach((transaction : transactionType) => {
+      totalOftransactions += +transaction.value;
+    });
+    this.sumOfTransactionsEvent.emit(totalOftransactions);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriber$.unsubscribe();
+  }
 
 }
