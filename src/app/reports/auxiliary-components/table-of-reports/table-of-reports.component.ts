@@ -28,6 +28,8 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   @Output() exportReportEvent = new EventEmitter<any>();
   @Output() sumOfTransactionsEvent = new EventEmitter<number>();
+  @Output() filteredDataEvent = new EventEmitter<Array<transactionType>>();
+
   @Input() transactionsData : Array<transactionType> = [];
 
   // vector to store subscriptions
@@ -69,7 +71,6 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   }
 
   statusFilterHandler(statusFilters : Array<filterType>, transactData : Array<transactionType>) : void {
-    debugger
     let temporaryResults: any[]  = [];
     statusFilters.forEach((filter : filterType) => {
       temporaryResults.push(
@@ -82,9 +83,12 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     */
     if (temporaryResults.length > 0) {
       this.transactionsData = temporaryResults.flat(1);
+      this.filteredDataEvent.emit([]);
     } else {
       this.transactionsData = transactData;
     }
+
+    this.filteredDataEvent.emit(this.transactionsData);
       
   }
 

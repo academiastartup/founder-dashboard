@@ -11,7 +11,10 @@ import { ServiceForDataService, transactionType } from '../services-for-data/ser
 export class HomeComponent implements OnInit, OnDestroy {
 
   transactionsData : Array<transactionType> = [];
+  transactionsDataFiltered : Array<transactionType> = [];
+ 
   totalOfTransactionsInValue : number = 0;
+  numberOfTransactionPages : number = 1;
 
   openDownloadReportModalWindow : boolean = false;
   openFilterWindow : boolean = false;
@@ -71,9 +74,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   loadTransactions() {
     return this.serviceForDataService.getTransactions().subscribe((data : Array<transactionType>) => {
+      
+      this.computeTheNumberOfTransactionPages(data);
       this.transactionsData = data;
+      this.transactionsDataFiltered = this.transactionsData;
       this.dataReadyToShow = true;
       this.totalOfTransactionsInValue = this.getSumOfTransactionsInValue(data);
+
     });
   }
 
@@ -90,6 +97,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.totalOfTransactionsInValue = $event;
   }
 
+  setTransactionsData($event : any) {
+    if ($event.length == 0) {
+      this.transactionsDataFiltered = this.transactionsData;
+    } else {
+      this.transactionsDataFiltered = $event;
+    }
+    this.computeTheNumberOfTransactionPages(
+      this.transactionsDataFiltered
+    );
+  }
+
   /*helpers*/
   getSumOfTransactionsInValue(transasctions : Array<transactionType>) : number {
     let sum = 0;
@@ -97,6 +115,29 @@ export class HomeComponent implements OnInit, OnDestroy {
       sum += +transasction.value;
     })
     return sum;
+  }
+
+  /*
+  ******* PAGINATION FUNCTIONALITY
+  */
+  computeTheNumberOfTransactionPages(transactionData : Array<transactionType>) {
+    // get the total number of transaction pages (page=30 transactions)
+    if (transactionData.length <= 30) {
+      this.numberOfTransactionPages = 1;
+    } else {
+      this.numberOfTransactionPages = 
+      (transactionData.length / 30) > Math.floor(transactionData.length/30) ?  
+      Math.floor(transactionData.length / 30) + 1 : Math.floor(transactionData.length/30);
+    }
+  }
+
+
+  previousPage() {
+    alert('previous page')
+  }
+  
+  nextPage() {
+    alert('next page')
   }
 
 }
