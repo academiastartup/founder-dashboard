@@ -5,7 +5,7 @@
     <div class="header-section">
         <h1 class="section-main-title">Relatório das operações</h1>
         <div class="pagination-section">
-            <p class="pagination-indicator">1 de {{numberOfTransactionPages}}</p>
+            <p class="pagination-indicator">{{currentPageNumber}} de {{numberOfTransactionPages}}</p>
             <div class="forward-backward-icons">
 
                 <!-- backward icon -->
@@ -62,7 +62,7 @@
     </div>
 
     <app-table-of-reports 
-        [transactionsData]="transactionsDataFiltered" 
+        [transactionsData]="transactionsDataFiltered.slice(indexToTransactions[currentPageNumber][0], indexToTransactions[currentPageNumber][1])" 
         (sumOfTransactionsEvent)="setTransactionsTotalInValueFromEvent($event)"
         (filteredDataEvent)="setTransactionsData($event)"
         (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
@@ -72,7 +72,7 @@
         <p class="reports-table-footer-txt">{{ totalOfTransactionsInValue | currency:'Kz'}}</p>
         
         <div class="pagination-section">
-            <p class="reports-table-footer-txt">1 de {{numberOfTransactionPages}}</p>
+            <p class="reports-table-footer-txt">{{currentPageNumber}} de {{numberOfTransactionPages}}</p>
             <div class="forward-backward-icons">
 
                 <!-- backward icon -->

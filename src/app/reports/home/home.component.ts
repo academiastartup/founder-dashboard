@@ -14,13 +14,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   transactionsDataFiltered : Array<transactionType> = [];
  
   totalOfTransactionsInValue : number = 0;
-  numberOfTransactionPages : number = 1;
+  numberOfTransactionPages : number = 0;
+  currentPageNumber : number = 0;
 
   openDownloadReportModalWindow : boolean = false;
   openFilterWindow : boolean = false;
   activeFilters : Array<{name : string, type : string}> = [];
 
   dataReadyToShow : boolean = false;
+
+  indexToTransactions : any = {}
 
   // vector to store subscriptions
   subscriber$ : any;
@@ -77,7 +80,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       this.computeTheNumberOfTransactionPages(data);
       this.transactionsData = data;
-      this.transactionsDataFiltered = this.transactionsData;
       this.dataReadyToShow = true;
       this.totalOfTransactionsInValue = this.getSumOfTransactionsInValue(data);
 
@@ -98,11 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   setTransactionsData($event : any) {
-    if ($event.length == 0) {
-      this.transactionsDataFiltered = this.transactionsData;
-    } else {
-      this.transactionsDataFiltered = $event;
-    }
+    this.transactionsDataFiltered = $event;
     this.computeTheNumberOfTransactionPages(
       this.transactionsDataFiltered
     );
@@ -123,21 +121,52 @@ export class HomeComponent implements OnInit, OnDestroy {
   computeTheNumberOfTransactionPages(transactionData : Array<transactionType>) {
     // get the total number of transaction pages (page=30 transactions)
     if (transactionData.length <= 30) {
+
       this.numberOfTransactionPages = 1;
+      this.currentPageNumber = 1;
+
+      this.transactionsDataFiltered = transactionData;
+      
+      if (transactionData.length == 0) {
+        this.numberOfTransactionPages = 0;
+        this.currentPageNumber = 0;
+      }
+
     } else {
       this.numberOfTransactionPages = 
       (transactionData.length / 30) > Math.floor(transactionData.length/30) ?  
       Math.floor(transactionData.length / 30) + 1 : Math.floor(transactionData.length/30);
+
+      this.currentPageNumber = 1;
+
+      this.transactionsDataFiltered = transactionData;
+      this.divideUpDataIntoPages(transactionData);
     }
   }
 
+  divideUpDataIntoPages(transactData : Array<transactionType>) : void {
+    let startinPoint : number = 0, pageIndx = 1;
+
+    for (let counter = 0; counter < transactData.length; counter++) {
+      if ((counter != 0) && (counter % 30 == 0)) {
+        this.indexToTransactions[pageIndx] = [startinPoint,counter];
+        startinPoint = counter + 1;
+        pageIndx++;
+      }
+    }
+    this.indexToTransactions[pageIndx] = [startinPoint, transactData.length]
+  }
 
   previousPage() {
-    alert('previous page')
+    debugger
+    if (this.currentPageNumber > 1)
+      this.currentPageNumber--;
   }
   
   nextPage() {
-    alert('next page')
+    debugger
+    if (this.currentPageNumber < this.numberOfTransactionPages)
+      this.currentPageNumber++;
   }
 
 }
