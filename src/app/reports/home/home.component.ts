@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscriber } from 'rxjs';
+import { filter, Subscriber } from 'rxjs';
 import { ServiceFilterMessengerService } from '../service-messengers/service-filter-messenger.service';
 import { ServiceForDataService, transactionType } from '../services-for-data/service-for-data.service';
 
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (newFilter.type == 'Date')
           this.activeFilters = this.activeFilters.filter(filter => filter.type != 'Date');
         
+        console.log(newFilter.name)
         this.activeFilters.push(newFilter);
 
         // comunicate with the reports table once a new filter is added
@@ -168,5 +169,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.currentPageNumber < this.numberOfTransactionPages)
       this.currentPageNumber++;
   }
+
+  displaysTransactionsData() {
+    
+    if (this.transactionsDataFiltered.length > 0) {
+      return this.transactionsDataFiltered.slice(this.indexToTransactions[this.currentPageNumber][0], this.indexToTransactions[this.currentPageNumber][1])
+    } return [];
+  }
+
 
 }

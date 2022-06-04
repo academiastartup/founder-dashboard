@@ -62,7 +62,7 @@
     </div>
 
     <app-table-of-reports 
-        [transactionsData]="transactionsDataFiltered.slice(indexToTransactions[currentPageNumber][0], indexToTransactions[currentPageNumber][1])" 
+        [transactionsData]="displaysTransactionsData()" 
         (sumOfTransactionsEvent)="setTransactionsTotalInValueFromEvent($event)"
         (filteredDataEvent)="setTransactionsData($event)"
         (exportReportEvent)="toggleDownloadReportModalWindow()"></app-table-of-reports>
