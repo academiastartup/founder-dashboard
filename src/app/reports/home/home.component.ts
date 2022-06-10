@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (newFilter.type == 'Date')
           this.activeFilters = this.activeFilters.filter(filter => filter.type != 'Date');
         
-        console.log(newFilter.name)
         this.activeFilters.push(newFilter);
 
         // comunicate with the reports table once a new filter is added
@@ -171,7 +170,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   displaysTransactionsData() {
-    
     if (this.transactionsDataFiltered.length > 0) {
       return this.transactionsDataFiltered.slice(this.indexToTransactions[this.currentPageNumber][0], this.indexToTransactions[this.currentPageNumber][1])
     } return [];

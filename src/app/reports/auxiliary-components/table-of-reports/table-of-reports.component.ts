@@ -42,17 +42,11 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriber$ = this.serviceFilterMessengerService.getFilterAndTransactionToSendAsObservable().
       subscribe((value : any) => {
-      
-        ////// ---- STATUS FILTER ---- //////
-        this.statusFilterHandler(
-          value.filterArr.filter((filtr : filterType) => filtr.type == 'status'),
-          value.transactionsData
-        )
+     
+        this.applyFilters(value.filterArr, value.transactionsData);
 
-
-         // computes sum of all transactions and send it back to table-reports component
-         this.computeSumOfTransactions();
-
+        // computes sum of all transactions and send it back to table-reports component
+        this.computeSumOfTransactions();
       });
   }
 
@@ -70,28 +64,6 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1]]}`
   }
 
-  statusFilterHandler(statusFilters : Array<filterType>, transactData : Array<transactionType>) : void {
-    let temporaryResults: any[]  = [];
-    statusFilters.forEach((filter : filterType) => {
-      temporaryResults.push(
-        transactData.filter((filtr : transactionType) => filtr.status == filter.name)
-      )
-    })
-
-    /*
-    * THE FOLLOWING CODE SHOULD BE REPLACED BY A BETTER ALTERNATIVE
-    */
-    if (temporaryResults.length > 0) {
-      this.transactionsData = temporaryResults.flat(1);
-      this.filteredDataEvent.emit([]);
-    } else {
-      this.transactionsData = transactData;
-    }
-
-    this.filteredDataEvent.emit(this.transactionsData);
-      
-  }
-
   computeSumOfTransactions() {
     let totalOftransactions = 0;
     this.transactionsData.forEach((transaction : transactionType) => {
@@ -99,6 +71,93 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     });
     this.sumOfTransactionsEvent.emit(totalOftransactions);
   }
+
+  /*
+  ************* Filter functionality *************
+  */
+
+  applyFilters(filters : Array<filterType>, transactionsData : Array<transactionType>) : void {
+
+    let filteredTransactionsToEmit : Array<transactionType> = transactionsData;
+
+    // apply status filters
+    filteredTransactionsToEmit = this.applyStatusFilter(
+      filters.filter((filtr : filterType) => filtr.type == 'status'),
+      filteredTransactionsToEmit
+    );
+
+    // apply quantity and direction filters
+    filteredTransactionsToEmit = this.applyQuantityAndDirectionFilter(
+      filters.filter((filtr : filterType) => filtr.type == 'quantity'),
+      filteredTransactionsToEmit
+    );
+    
+    this.transactionsData = filteredTransactionsToEmit;
+    this.filteredDataEvent.emit(filteredTransactionsToEmit);
+  }
+
+  // quantity filter
+  applyQuantityAndDirectionFilter(statusFilters : Array<filterType>, transactData : Array<transactionType>) : Array<transactionType> {
+    let temporaryResults: any[]  = [];
+
+    statusFilters.forEach((filter : filterType) => {
+      
+      if (filter.name == 'Entradas' || filter.name == 'Saídas') {
+        temporaryResults.push(
+          transactData.filter((transaction : transactionType) => transaction.direction == this.trasanctionDirectionTranslator(filter.name))
+        );
+      } else {
+        temporaryResults.push(
+          this.handleTransactionIntervals(filter.name.split(" "))
+        );
+      }
+      
+    });
+
+    if (temporaryResults.length > 0) {
+      return temporaryResults.flat(1);
+    } else {
+      return transactData;
+    } 
+  }
+
+  // status filter
+  applyStatusFilter(statusFilters : Array<filterType>, transactData : Array<transactionType>) : Array<transactionType> {
+    let temporaryResults: any[]  = [];
+
+    statusFilters.forEach((filter : filterType) => {
+      temporaryResults.push(
+        transactData.filter((transaction : transactionType) => transaction.status == filter.name)
+      )
+    });
+
+    if (temporaryResults.length > 0) {
+      return temporaryResults.flat(1);
+    } else {
+      return transactData;
+    }      
+  }
+
+
+
+  /*
+  ********  Helpers
+  */
+  trasanctionDirectionTranslator(filterName : string) : string {
+    debugger
+    if (filterName == 'Entradas') {
+      return 'in';
+    } else {
+      return 'out';
+    }
+  }
+
+  handleTransactionIntervals(filterComponents : Array<string>) : Array<transactionType> {
+    return [];
+  }
+
+
+
 
   ngOnDestroy(): void {
     this.subscriber$.unsubscribe();
