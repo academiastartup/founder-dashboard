@@ -108,7 +108,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
         );
       } else {
         temporaryResults.push(
-          this.handleTransactionIntervals(filter.name.split(" "))
+          this.handleTransactionIntervals(filter.name.split(" "), transactData)
         );
       }
       
@@ -138,13 +138,10 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     }      
   }
 
-
-
   /*
   ********  Helpers
   */
   trasanctionDirectionTranslator(filterName : string) : string {
-    debugger
     if (filterName == 'Entradas') {
       return 'in';
     } else {
@@ -152,12 +149,66 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleTransactionIntervals(filterComponents : Array<string>) : Array<transactionType> {
-    return [];
+  extractMonetaryValueFromRanges(text : string) : {least : number, bigger : number} {
+    let expressionParts : Array<any> = text.split('-');
+    let leastNumber : number = +expressionParts[0].split('Kz')[1];
+    let biggerNumber: number = +expressionParts[1].split('Kz')[1];
+    return {
+      least : leastNumber,
+      bigger : biggerNumber
+    }
   }
 
+  extractMonetaryValueFromSpecific(text : string) : {value : number} {
+    let expressionParts : Array<any> = text.split('=');
+    return {
+      value : +expressionParts[1].split('Kz')[1]
+    }
+  }
 
+  extractMonetaryValueFromMinimumValue(text : string) : {value : number} {
+    let expressionParts : Array<any> = text.split('>');
+    return {
+      value : +expressionParts[1].split('Kz')[1]
+    }
+  }
 
+  extractMonetaryValueFromMaxValue(text : string) : {value : number} {
+    let expressionParts : Array<any> = text.split('<');
+    return {
+      value : +expressionParts[1].split('Kz')[1]
+    }
+  }
+
+  handleTransactionIntervals(filterComponents : Array<string>, transactions : Array<transactionType>) : Array<transactionType> {
+    debugger
+    
+    let temporaryResults: Array<any> = []; 
+
+    if (filterComponents[0] == 'Entradas' || filterComponents[0] == 'Saídas') {
+      temporaryResults.push(
+        transactions.filter((transaction : transactionType) => transaction.direction == this.trasanctionDirectionTranslator(filterComponents[0]))
+      );
+      temporaryResults = temporaryResults.flat(1);
+    } else {
+      temporaryResults = transactions;
+    }
+
+    // for ranges
+    if (filterComponents[1].indexOf("-") != -1) {
+      //alert('its a range');
+      return temporaryResults.filter(transaction => transaction.value >= this.extractMonetaryValueFromRanges(filterComponents[1]).least && transaction.value <= this.extractMonetaryValueFromRanges(filterComponents[1]).bigger);
+    } else if (filterComponents[1].indexOf("=") != -1) {
+      //alert('specific value');
+      return temporaryResults.filter(transaction => transaction.value == this.extractMonetaryValueFromSpecific(filterComponents[1]).value)
+    } else if (filterComponents[1].indexOf(">") != -1) {
+      //alert('at least');
+      return temporaryResults.filter(transaction => transaction.value >= this.extractMonetaryValueFromMinimumValue(filterComponents[1]).value)
+    } else {
+      //alert('no more than');
+      return temporaryResults.filter(transaction => transaction.value <= this.extractMonetaryValueFromMaxValue(filterComponents[1]).value)
+    }
+  }
 
   ngOnDestroy(): void {
     this.subscriber$.unsubscribe();
