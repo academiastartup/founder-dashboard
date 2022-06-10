@@ -91,7 +91,13 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
       filters.filter((filtr : filterType) => filtr.type == 'quantity'),
       filteredTransactionsToEmit
     );
-    
+
+    // apply date filters
+    filteredTransactionsToEmit = this.applyDateFilter(
+      filters.filter((filtr : filterType) => filtr.type == 'Date'),
+      filteredTransactionsToEmit
+    );
+
     this.transactionsData = filteredTransactionsToEmit;
     this.filteredDataEvent.emit(filteredTransactionsToEmit);
   }
@@ -119,6 +125,12 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     } else {
       return transactData;
     } 
+  }
+
+  // date filter
+  applyDateFilter(dateFilters : Array<filterType>, transactData : Array<transactionType>) : Array<transactionType> {
+    let temporaryResults: any[]  = [];
+    return temporaryResults;
   }
 
   // status filter
