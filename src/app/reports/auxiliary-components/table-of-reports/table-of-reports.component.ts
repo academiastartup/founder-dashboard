@@ -3,10 +3,10 @@ import { ServiceFilterMessengerService } from '../../service-messengers/service-
 import { transactionType } from '../../services-for-data/service-for-data.service';
 
 const MONTHS : Array<string> = [
-  'Janeiro','Fevereiro','Março',
-  'Abril','Maio','Junho','Julho',
-  'Agosto','Setembro','Outubro',
-  'Novembro','Dezembro'
+  'Jan','Fev','Mar',
+  'Abr','Mai','Jun','Jul',
+  'Ago','Set','Out',
+  'Nov','Dez'
 ];
 
 const ABREVIATED_MONTHS : any = {
@@ -60,7 +60,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   getBetterDate(date : string) : string {
     let arrayOfDateParts = date.split("/");
-    return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1] - 1]}`
+    return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1] - 1]},  ${arrayOfDateParts[0]}`
   }
 
   computeSumOfTransactions() {
@@ -76,7 +76,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   */
 
   applyFilters(filters : Array<filterType>, transactionsData : Array<transactionType>) : void {
-    debugger
+
     let filteredTransactionsToEmit : Array<transactionType> = transactionsData;
 
     // apply status filters
