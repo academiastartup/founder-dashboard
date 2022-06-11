@@ -234,8 +234,9 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
       }
 
       // multiple months period
-      if (dateFilterParts[0].split(",").length == 2) {
-        alert('multiple months')
+      if (dateFilterParts[0].split(",").length == 2) { 
+        startDate = `${dateFilterParts[0].split(",")[1]}/${ABREVIATED_MONTHS[dateFilterParts[0].split(",")[0].split(" ")[0]]}/${this.formatNumber(dateFilterParts[0].split(",")[0].split(" ")[1])}`;
+        endDate = `${dateFilterParts[1].split(",")[1]}/${ABREVIATED_MONTHS[this.formatNumber(dateFilterParts[1].split(",")[0].split(" ")[1])]}/${this.formatNumber(dateFilterParts[1].split(",")[0].split(" ")[2])}`;
       }
     }
     
