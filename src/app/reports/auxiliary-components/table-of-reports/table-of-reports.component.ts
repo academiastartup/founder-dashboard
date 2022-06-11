@@ -3,19 +3,18 @@ import { ServiceFilterMessengerService } from '../../service-messengers/service-
 import { transactionType } from '../../services-for-data/service-for-data.service';
 
 const MONTHS : Array<string> = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro'
+  'Janeiro','Fevereiro','Março',
+  'Abril','Maio','Junho','Julho',
+  'Agosto','Setembro','Outubro',
+  'Novembro','Dezembro'
 ];
+
+const ABREVIATED_MONTHS : any = {
+  'Jan' : "01", 'Fev' : "02",'Mar' : "03",
+  'Abr' : "04",'Mai' : "05",'Jun' : "06",
+  'Jul' : "07",'Ago' : "08",'Set' : "09",
+  'Out' : "10",'Nov' : "11",'Dez' : "12"
+};
 
 interface filterType {name : string, type : string}
 
@@ -61,7 +60,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   getBetterDate(date : string) : string {
     let arrayOfDateParts = date.split("/");
-    return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1]]}`
+    return `${arrayOfDateParts[2]} de ${MONTHS[+arrayOfDateParts[1] - 1]}`
   }
 
   computeSumOfTransactions() {
@@ -77,7 +76,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   */
 
   applyFilters(filters : Array<filterType>, transactionsData : Array<transactionType>) : void {
-
+    debugger
     let filteredTransactionsToEmit : Array<transactionType> = transactionsData;
 
     // apply status filters
@@ -130,7 +129,18 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   // date filter
   applyDateFilter(dateFilters : Array<filterType>, transactData : Array<transactionType>) : Array<transactionType> {
     let temporaryResults: any[]  = [];
-    return temporaryResults;
+    let dateFilter = dateFilters[0] ? dateFilters[0].name : '';
+    
+    temporaryResults.push(transactData.filter((transaction) => new Date(transaction.date) >= new Date(this.figureDateFilter(dateFilter).startDate) && new Date(transaction.date) <= new Date(this.figureDateFilter(dateFilter).endDate)));
+   
+    temporaryResults = temporaryResults.flat(1)
+    console.log(temporaryResults);
+
+    if (temporaryResults.length > 0) {
+      return temporaryResults.flat(1);
+    } else {
+      return transactData;
+    } 
   }
 
   // status filter
@@ -151,7 +161,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
   }
 
   /*
-  ********  Helpers
+  ******************* Helpers
   */
   trasanctionDirectionTranslator(filterName : string) : string {
     if (filterName == 'Entradas') {
@@ -192,9 +202,50 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleTransactionIntervals(filterComponents : Array<string>, transactions : Array<transactionType>) : Array<transactionType> {
-    debugger
+  removeBlankSpace(text : string) : string {
+    let newText = '';
+    for (let x = 0; x < text.length; x++) {
+      if (text[x] != " ") {
+        if (x != 0)
+          newText += text[x];
+      }
+    }
+    return newText;
+  }
+
+  formatNumber(number : string) : string {
+    if (+number < 10) {
+      return `0${number}`
+    }
+    return number;
+  }
+
+
+  figureDateFilter(dateFilter : string) : {startDate : string, endDate : string} {
+    let startDate = '', endDate = '';
+
+    if (dateFilter != '') {
+      let dateFilterParts = dateFilter.split('-');
+
+      // one month period
+      if (dateFilterParts[0].split(",").length == 1) {
+        startDate = `${dateFilterParts[1].split(",")[1]}/${ABREVIATED_MONTHS[dateFilterParts[0].split(" ")[0]]}/${this.formatNumber(dateFilterParts[0].split(" ")[1])}`;
+        endDate = `${dateFilterParts[1].split(",")[1]}/${ABREVIATED_MONTHS[dateFilterParts[1].split(",")[0].split(" ")[1]]}/${this.formatNumber(dateFilterParts[1].split(",")[0].split(" ")[3])}`;
+      }
+
+      // multiple months period
+      if (dateFilterParts[0].split(",").length == 2) {
+        alert('multiple months')
+      }
+    }
     
+    return {
+      startDate : startDate,
+      endDate : endDate
+    };
+  }
+
+  handleTransactionIntervals(filterComponents : Array<string>, transactions : Array<transactionType>) : Array<transactionType> {  
     let temporaryResults: Array<any> = []; 
 
     if (filterComponents[0] == 'Entradas' || filterComponents[0] == 'Saídas') {
