@@ -98,7 +98,7 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     );
 
     this.transactionsData = filteredTransactionsToEmit;
-    this.filteredDataEvent.emit(filteredTransactionsToEmit);
+    this.filteredDataEvent.emit(filteredTransactionsToEmit.sort((objA, objB) => Number(new Date(objB.date)) - Number(new Date(objA.date)),));
   }
 
   // quantity filter
@@ -220,7 +220,6 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
     }
     return number;
   }
-
 
   figureDateFilter(dateFilter : string) : {startDate : string, endDate : string} {
     let startDate = '', endDate = '';

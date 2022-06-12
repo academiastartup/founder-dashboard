@@ -171,7 +171,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   displaysTransactionsData() {
     if (this.transactionsDataFiltered.length > 0) {
-      return this.transactionsDataFiltered.slice(this.indexToTransactions[this.currentPageNumber][0], this.indexToTransactions[this.currentPageNumber][1])
+      return this.transactionsDataFiltered.slice(this.indexToTransactions[this.currentPageNumber][0], this.indexToTransactions[this.currentPageNumber][1]).
+        sort((objA, objB) => Number(new Date(objB.date)) - Number(new Date(objA.date)),)
     } return [];
   }
 
