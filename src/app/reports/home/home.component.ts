@@ -158,15 +158,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   previousPage() {
-    debugger
     if (this.currentPageNumber > 1)
       this.currentPageNumber--;
   }
   
   nextPage() {
-    debugger
     if (this.currentPageNumber < this.numberOfTransactionPages)
       this.currentPageNumber++;
+  }
+
+  goToFirstPage() {
+    this.currentPageNumber = 1;
   }
 
   displaysTransactionsData() {

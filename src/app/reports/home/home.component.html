@@ -6,7 +6,15 @@
         <h1 class="section-main-title">Relatório das operações</h1>
         <div class="pagination-section">
             <p class="pagination-indicator">{{currentPageNumber}} de {{numberOfTransactionPages}}</p>
+
             <div class="forward-backward-icons">
+
+                <!-- double backward icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" (click)="goToFirstPage()"class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                    *ngIf="currentPageNumber >= 3"
+                    >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
 
                 <!-- backward icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" (click)="previousPage()"
@@ -74,6 +82,13 @@
         <div class="pagination-section">
             <p class="reports-table-footer-txt">{{currentPageNumber}} de {{numberOfTransactionPages}}</p>
             <div class="forward-backward-icons">
+
+                <!-- double backward icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" (click)="goToFirstPage()"class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                    *ngIf="currentPageNumber >= 3"
+                    >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
 
                 <!-- backward icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" (click)="previousPage()"
