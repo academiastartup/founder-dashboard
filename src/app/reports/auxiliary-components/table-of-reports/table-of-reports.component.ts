@@ -128,18 +128,19 @@ export class TableOfReportsComponent implements OnInit, OnDestroy {
 
   // date filter
   applyDateFilter(dateFilters : Array<filterType>, transactData : Array<transactionType>) : Array<transactionType> {
+    debugger
+    
     let temporaryResults: any[]  = [];
     let dateFilter = dateFilters[0] ? dateFilters[0].name : '';
     
-    temporaryResults.push(transactData.filter((transaction) => new Date(transaction.date) >= new Date(this.figureDateFilter(dateFilter).startDate) && new Date(transaction.date) <= new Date(this.figureDateFilter(dateFilter).endDate)));
+    temporaryResults = transactData.filter((transaction) => new Date(transaction.date) >= new Date(this.figureDateFilter(dateFilter).startDate) && new Date(transaction.date) <= new Date(this.figureDateFilter(dateFilter).endDate));
    
-    temporaryResults = temporaryResults.flat(1)
-    console.log(temporaryResults);
-
     if (temporaryResults.length > 0) {
-      return temporaryResults.flat(1);
-    } else {
+      return temporaryResults;
+    } else if  (dateFilter == '') {
       return transactData;
+    } else {
+      return [];
     } 
   }
 
