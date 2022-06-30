@@ -2,21 +2,48 @@
     
     <div class="search-input-area relative-positioned">
         <app-search-input (textChange)="onTextChange($event)" [placeholder]="'Procure pelos beneficiários aqui'"></app-search-input>
-        <app-search-result-window [searchResultWindwWidth]="100" [userTypedInSearcData]="userTypedInSearcData"></app-search-result-window>
+        <app-search-result-window [searchResultWindwWidth]="100" [userTypedInSearcData]="userTypedInSearcData"
+            (onSearchResultClickEvent)="addBeneficiary($event)"
+        ></app-search-result-window>
     </div>
 
     <div class="beneficiary-container">
-        <app-no-data-component [noDataMsg]="'Sem Beneficiários'" [showAditionalLinks]="false"></app-no-data-component>
-
+        <app-no-data-component [noDataMsg]="'Sem Beneficiários'" [showAditionalLinks]="false" *ngIf="beneficiaries.length == 0"></app-no-data-component>
+        <div class="beneficiary-box" *ngIf="beneficiaries.length > 0">
+            <div class="beneficiary" *ngFor="let ben of beneficiaries">
+                <div class="details flex-container">
+                    <div class="name-initials flex-container">
+                        <span>{{getInitials(ben.name)}}</span>
+                    </div>
+                    <div class="name">
+                        <span>{{ben.name}}</span>
+                    </div>
+                </div>
+                <div class="payform flex-container">
+                    <form action="">
+                        <input type="text" 
+                            [(ngModel)]="ben.value" 
+                            placeholder="0,00 Kz" 
+                            [ngModelOptions]="{standalone: true}"
+                            class="value-input">
+                    </form>
+                </div>
+                <div class="remove-beneficiary flex-container">
+                    <button class="remove-btn" (click)="removeBeneficiary(ben)">Remover</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="forward-and-backward-btn">
-        <div class="close-section">
+    <div class="forward-and-backward-btn" *ngIf="currentPayStep != 1">
+        <!----
+        <div class="close-section" (click)="goPreviousStep()">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             <span class="inline-block">Voltar</span>
         </div>
+        -->
 
         <div class="close-section" (click)="goNextStep()">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -26,9 +53,23 @@
         </div>
     </div>
 
+    <div class="pay-btn" *ngIf="currentPayStep == 1">
+        <button (click)="toggleModalWindow()">Pagar</button>
+    </div>
+
 </div>
 
 <!-- ///// SHADOW TO HIGHLIGHT THE MODAL WINDOW -->
-<div class="shadow" *ngIf="false"></div>
+<div class="shadow" *ngIf="backgroundCover"></div>
 
-<app-code-isert-modal-window *ngIf="false"></app-code-isert-modal-window>
+<!-- ///// VERIFICATION CODE MODAL WINDOW ///// --->
+<app-code-isert-modal-window *ngIf="openSmsAuthWindow" (closeModalWindow)="closeAllModalWindw()"></app-code-isert-modal-window>
+
+
+<!-- //// PAYMENT DETAILS MODAL WINDOW ///// -->
+<app-payment-details-modal-window 
+    *ngIf="openModalWindow" 
+    (closeModalWindow)="toggleModalWindow()"
+    (openSmsAuthWindow)="openSmsAuthModalWindow()"
+    [beneficiaries]="beneficiaries"
+></app-payment-details-modal-window>

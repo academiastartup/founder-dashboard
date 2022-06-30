@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-from-search-result',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-from-search-result.component.css']
 })
 export class UserFromSearchResultComponent implements OnInit {
+
+  @Input() userDetails : any;
 
   public showSelectIcon : boolean = true;
 

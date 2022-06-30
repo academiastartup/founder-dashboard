@@ -6,7 +6,8 @@
     <!-- THE RESULTS FROM THE SEARCH WILL BE DISPLAYED HERE -->
     <div class="results-box">
 
-        <app-user-from-search-result></app-user-from-search-result>
+        <app-user-from-search-result *ngFor="let ben of searchResults" 
+            (click)="emitSearchResultClickEmit(ben)" [userDetails]="ben"></app-user-from-search-result>
         <!--
         <app-transactions-from-search-result></app-transactions-from-search-result>
         <app-page-from-search-result></app-page-from-search-result>

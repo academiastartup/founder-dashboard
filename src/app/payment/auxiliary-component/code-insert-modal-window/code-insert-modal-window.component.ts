@@ -7,10 +7,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CodeInsertModalWindowComponent implements OnInit {
 
+  @Output() closeModalWindow = new EventEmitter<any>();
+
   constructor() { }
 
   closeModalWindowEvent() {
-   
+    this.closeModalWindow.emit(true);
   }
 
   ngOnInit(): void {

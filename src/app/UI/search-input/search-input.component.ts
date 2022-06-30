@@ -1,8 +1,10 @@
 /*courtesy of : https://www.tsmean.com/articles/angular/implementing-a-live-search-aka-search-as-you-type-with-angular/ */
 
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
+import { Subject, Subscription, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators'
+import { ServiceSearchResultMessengerService } from 'src/app/reports/service-messengers/service-search-result-messenger.service';
+import { SearchResultService } from '../search-result-service/search-result.service';
 
 @Component({
   selector: 'app-search-input',
@@ -27,8 +29,12 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   );
 
   subscriptions : Subscription[] = [];
+  searchResultSubscription : Subscription = of().subscribe();
 
-  constructor() { }
+  constructor(
+    private searchResultService : SearchResultService,
+    private serviceSearchResultMessengerService : ServiceSearchResultMessengerService
+  ) { }
 
   ngOnInit(): void {
     const subscription = this.trigger.subscribe(currentValue => {
@@ -42,7 +48,12 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   }
 
   onInput(e : any) {
+    this.searchResultSubscription.unsubscribe();
     this.inputValue.next(e.target.value);
+    this.searchResultSubscription = this.searchResultService.getUsers(e.target.value.toLocaleLowerCase()).
+      subscribe((value : any) => {
+        this.serviceSearchResultMessengerService.searchResultToSend.next(value);  
+      });
   }
 
   onFocus() {

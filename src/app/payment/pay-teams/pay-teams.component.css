@@ -1,7 +1,27 @@
 .forward-and-backward-btn {
     display : flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+}
+
+.large-margin-top {
+    margin-top : 2.4rem;
+}
+
+
+.pay-btn {
+    display : flex;
+    justify-content: center;
+}
+
+.pay-btn button {
+    width : 100%;
+    padding : 1.6rem;
+    cursor: pointer;
+    border: none;
+    color : #fff;
+    font-size: 1.6rem;
+    background-color: #1c7fd6;
 }
 
 .close-section {
@@ -33,4 +53,47 @@
 
 .close-section:hover {
     color : #1c7fd6;
+}
+
+/*beneficary box*/
+.beneficiary-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.beneficiary {
+    display: flex;
+    padding : 1.6rem;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.07);
+    justify-content: space-between;
+}
+
+.value-input {
+    outline: none;
+    border: none;
+    text-align: right;
+    font-size: 1.6rem;
+    transition: all 0.5s;
+    border-bottom: solid 2px transparent;
+    padding : 0.8rem;
+}
+
+.value-input:focus {
+    border-bottom: solid 2px #1c7fd6;
+}
+
+.details {
+    gap : 1.2rem;
+}
+
+.name span {
+    font-size: 1.6rem;
+}
+
+.remove-btn {
+    padding : 0.8rem;
+    cursor: pointer;
+    border: none;
+    color : #fff;
+    background-color: #1c7fd6;
 }

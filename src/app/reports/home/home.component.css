@@ -98,14 +98,6 @@
     padding : 0.8rem 0;
 }
 
-.section-main-title {
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color :  #495057;
-    font-size : 1.8rem;
-}
-
 .footer-section {
     display: flex;
     margin-top: 1.6rem;

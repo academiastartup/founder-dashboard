@@ -11,6 +11,8 @@ import { SearchInputModule } from '../UI/search-input/search-input.module';
 import { SearchResultWindowModule } from '../UI/search-result-window/search-result-window.module';
 import { NoDataComponentModule } from '../no-data-component/no-data-component.module';
 import { CodeInsertModalWindowComponent } from './auxiliary-component/code-insert-modal-window/code-insert-modal-window.component';
+import { PaymentDetailsModalWindowComponent } from './auxiliary-component/payment-details-modal-window/payment-details-modal-window.component';
+import { FormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {
@@ -42,11 +44,13 @@ const routes : Routes = [
     CodeInsertModalWindowComponent,
     RecurringPaymentComponent,
     PayTeamsComponent,
-    OtherPaymentsComponent
+    OtherPaymentsComponent,
+    PaymentDetailsModalWindowComponent
   ],
   imports: [
     CommonModule,
     StepTrackerModule,
+    FormsModule,
     NoDataComponentModule,
     SearchResultWindowModule,
     SearchInputModule,

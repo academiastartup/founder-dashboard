@@ -75,7 +75,8 @@ p {
 
 /*payment option section*/
 .payment-option-section {
-    align-self: center;
+    margin: 0 auto;
+    width: 50%;
 }
 
 .section-main-title {
