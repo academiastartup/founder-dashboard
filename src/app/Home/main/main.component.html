@@ -7,7 +7,11 @@
     </div>
     
     <div style="display : grid; width : 100%; grid-template-columns: 1fr 1fr; gap : 2.4rem">
-        <app-transaction></app-transaction>
-        <app-transaction></app-transaction>
+        <app-transaction [typeOfTransaction]="'entradas'" routerLink="/relatorios"
+            [transactionDescription]="'Entrada de valores'"
+            ></app-transaction>
+        <app-transaction [typeOfTransaction]="'saidas'" routerLink="/relatorios"
+            [transactionDescription]="'Saída de valores'"
+            ></app-transaction>
     </div>
 </div>

@@ -18,6 +18,12 @@ html {
     position: relative;
 }
 
+.flex-container {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .absolute-positioned {
     position : absolute;
 }
@@ -46,4 +52,22 @@ html {
 
 .paragraph {
     font-size: 1.6rem;
+}
+
+.section-main-title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /*font-size : 1.8rem;*/
+    font-size: 1.6rem;
+    font-weight: 400;
+    
+}
+
+
+.name-initials {
+    width : 40px;
+    height : 40px;
+    border-radius: 50%;
+    color : #fff;
+    background-color: #1c7fd6;
 }

@@ -1,22 +1,18 @@
 <div class="summary-component">
     <header class="header">
-        <p class="company-name">ENTRADAS</p>
-        <svg xmlns="http://www.w3.org/2000/svg" class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        <p class="section-main-title">{{transactionDescription}}</p>
     </header>
     
     <main>
-        <h1 class="welcome-message">AOA 300,000</h1>
+        <h1 class="total-of-money-moved"><span *ngIf="typeOfTransaction == 'saidas'">-</span>{{300000 | currency}}<span class="cents">.90</span></h1>
         <ul class="transaction-list">
             <li>
                 <div class="transaction-item">
                     <p>Recipiente da transacção</p>
                     <div class="transaction-area">
                         <div class="progress-bar">
-                            <div class="progress-bar-inside"></div>
+                            <div class="progress-bar-inside" [ngStyle]="{'background-color' : typeOfTransaction == 'saidas' ? '#ff8787' : '#8ce99a'}"></div>
                         </div>
-                        <p>AOA 60K</p>
                     </div>
                 </div>
             </li>
@@ -25,9 +21,8 @@
                     <p>Recipiente da transacção</p>
                     <div class="transaction-area">
                         <div class="progress-bar">
-                            <div class="progress-bar-inside"></div>
+                            <div class="progress-bar-inside" [ngStyle]="{'background-color' : typeOfTransaction == 'saidas' ? '#ff8787' : '#8ce99a'}"></div>
                         </div>
-                        <p>AOA 60K</p>
                     </div>
                 </div>
             </li>
@@ -36,9 +31,8 @@
                     <p>Recipiente da transacção</p>
                     <div class="transaction-area">
                         <div class="progress-bar">
-                            <div class="progress-bar-inside"></div>
+                            <div class="progress-bar-inside" [ngStyle]="{'background-color' : typeOfTransaction == 'saidas' ? '#ff8787' : '#8ce99a'}"></div>
                         </div>
-                        <p>AOA 60K</p>
                     </div>
                 </div>
             </li>                
@@ -47,15 +41,14 @@
                     <p>Recipiente da transacção</p>
                     <div class="transaction-area">
                         <div class="progress-bar">
-                            <div class="progress-bar-inside"></div>
+                            <div class="progress-bar-inside" [ngStyle]="{'background-color' : typeOfTransaction == 'saidas' ? '#ff8787' : '#8ce99a'}"></div>
                         </div>
-                        <p>AOA 60K</p>
                     </div>
                 </div>
             </li>
         </ul>
         <div class="know-more-section" style="margin-top: 40px">
-            <a href="#" class="more-transactions-link">Mais operações</a>
+            <a routerLink="/relatorios" class="more-transactions-link">Mais operações</a>
             <svg xmlns="http://www.w3.org/2000/svg" class="arrow-right" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>

@@ -1,8 +1,14 @@
 .summary-component {
     margin-top : 3.0rem;
-    padding : 4.8rem;
+    padding : 6.4rem;
+    cursor: pointer;
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+    border: solid 1px #e9ecef;
     border-radius: 10px;
+}
+
+.summary-component:hover {
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
 }
 
 .table-row {
@@ -66,7 +72,8 @@
 .transaction-list {
     display: flex;
     flex-direction: column;
-    gap : 1.2rem;
+    margin-top: 2.4rem;
+    gap : 1.6rem;
 }
 
 .transaction-item {
@@ -78,8 +85,7 @@
 
 .transaction-area {
     display : grid;
-    grid-template-columns: 4fr 1fr;
-    gap : 1.2rem;
+    grid-template-columns: 1fr;
     align-items: center;
 }
 
@@ -92,7 +98,7 @@
 .progress-bar-inside {
     height: 5px;
     width : 60%;
-    background-color: #1c7ed6;
+    background-color: red;
 }
 
 .header {
@@ -101,11 +107,24 @@
     align-items: center;
 }
 
-.arrow-icon {
-    width : 2.4rem;
-    stroke : green;
-}
-
 .transaction-item p {
     font-size: 1.4rem;
+}
+
+.cents {
+    font-size: 1.4rem;
+    position: absolute;
+    top : 0;
+    color : #868e96;
+    font-weight: 900;
+}
+
+
+.total-of-money-moved {
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    /*font-size : 1.8rem;*/
+    font-size: 2.4rem;
+    font-weight: 400;
 }

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.dataReadyToShow = true;
-    }, 2000);
+    }, 2000000);
   }
 
 }

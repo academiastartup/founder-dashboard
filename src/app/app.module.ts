@@ -15,6 +15,9 @@ import { SearchResultWindowModule } from './UI/search-result-window/search-resul
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MoneyPipe } from './shared-pipes/money.pipe';
+import { GraphModule } from './graphs/graph.module';
+
 
 @NgModule({
   declarations: [
@@ -24,11 +27,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     SummaryComponent,
     MainComponent,
     CreditBalanceComponent,
-    TransactionComponent
+    TransactionComponent,
+    MoneyPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    GraphModule,
     ReactiveFormsModule,
     HttpClientModule,
     LoaderModule,

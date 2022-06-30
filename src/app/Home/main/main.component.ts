@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.dataReadyToShow = true;
-    }, 2000);
+    }, 1);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transaction',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
+  @Input() typeOfTransaction : string = '';
+  @Input() transactionDescription : string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
